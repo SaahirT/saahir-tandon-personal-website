@@ -36,9 +36,11 @@ const courses = [
   { code: "CS 380", name: "Artificial Intelligence", category: "Computer Science", description: "Search, reasoning, machine learning fundamentals, and practical intelligent systems." },
   { code: "DS 310", name: "Applied Machine Learning", category: "Data Science", description: "Supervised learning, model evaluation, feature engineering, and responsible deployment." },
   { code: "CS 342", name: "Database Systems", category: "Computer Science", description: "Relational design, query optimization, transactions, and distributed data systems." },
-  { code: "ECON 325", name: "Econometrics", category: "Economics", description: "Causal inference and regression methods for analyzing real-world economic data." },
-  { code: "DS 260", name: "Data Visualization", category: "Data Science", description: "Visual analysis, storytelling, and interactive dashboards for complex datasets." },
-  { code: "ECON 210", name: "Intermediate Microeconomics", category: "Economics", description: "Consumer behavior, market structure, incentives, and strategic decision-making." },
+  { code: "01:220:103", name: "Introduction to Macroeconomics", category: "Economics", description: "Aggregate output, inflation, unemployment, and how fiscal and monetary policy shape the economy." },
+  { code: "01:220:102", name: "Introduction to Microeconomics", category: "Economics", description: "Supply and demand, consumer and producer behavior, market efficiency, and the effects of policy." },
+  { code: "01:220:321", name: "Intermediate Macroeconomic Analysis", category: "Economics", description: "Economic growth, business cycles, and macroeconomic models of output, employment, and prices." },
+  { code: "01:220:320", name: "Intermediate Microeconomic Analysis", category: "Economics", description: "Consumer behavior, market structure, incentives, and strategic decision-making." },
+  { code: "01:220:322", name: "Econometrics", category: "Economics", description: "Causal inference and regression methods for analyzing real-world economic data." },
 ] as const;
 
 const experiences = [
