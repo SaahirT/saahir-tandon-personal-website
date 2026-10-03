@@ -33,9 +33,23 @@ const navigation: { id: SectionId; label: string; icon: ComponentType<{ classNam
 ];
 
 const courses = [
-  { code: "CS 380", name: "Artificial Intelligence", category: "Computer Science", description: "Search, reasoning, machine learning fundamentals, and practical intelligent systems." },
-  { code: "DS 310", name: "Applied Machine Learning", category: "Data Science", description: "Supervised learning, model evaluation, feature engineering, and responsible deployment." },
-  { code: "CS 342", name: "Database Systems", category: "Computer Science", description: "Relational design, query optimization, transactions, and distributed data systems." },
+  { code: "01:198:111", name: "Introduction to Computer Science", category: "Computer Science", description: "Programming fundamentals, problem-solving, and software design with Java." },
+  { code: "01:198:210", name: "Data Structures", category: "Computer Science", description: "Lists, trees, hash tables, and graphs — the structures behind efficient programs." },
+  { code: "01:198:211", name: "Computer Architecture", category: "Computer Science", description: "Processor design, memory hierarchies, and how software meets hardware." },
+  { code: "01:198:344", name: "Design and Analysis of Computer Algorithms", category: "Computer Science", description: "Greedy methods, divide-and-conquer, dynamic programming, and complexity analysis." },
+  { code: "01:198:205", name: "Introduction to Discrete Structures I", category: "Computer Science", description: "Logic, sets, functions, and proof techniques — the math underpinning computer science." },
+  { code: "01:198:206", name: "Introduction to Discrete Structures II", category: "Computer Science", description: "Graphs, counting, and discrete probability models for computing." },
+  { code: "01:640:250", name: "Introductory to Linear Algebra", category: "Computer Science", description: "Matrices, vector spaces, and eigenvalues — the linear algebra behind modern data methods." },
+  { code: "01:730:329", name: "Minds, Machines, and Persons", category: "Computer Science", description: "Philosophy of mind and AI: intelligence, consciousness, and what machines can be." },
+  { code: "01:198:214", name: "Systems Programming", category: "Computer Science", description: "C programming, Unix tools, memory management, and systems-level software." },
+  { code: "01:198:336", name: "Principles of Information and Data Management", category: "Computer Science", description: "Relational databases, SQL, data models, and how information systems are built." },
+  { code: "01:640:151", name: "Calculus I", category: "Computer Science", description: "Limits, derivatives, and single-variable calculus with applications." },
+  { code: "01:640:152", name: "Calculus II", category: "Computer Science", description: "Integration techniques, sequences and series, and further applications." },
+  { code: "01:198:142", name: "Data 101", category: "Data Science", description: "Foundational data literacy: understanding, analyzing, and communicating with data." },
+  { code: "01:960:291", name: "Statistical Inference for Data Science", category: "Data Science", description: "Estimation, hypothesis testing, and statistical reasoning for data analysis." },
+  { code: "01:198:210", name: "Data Management for Data Science", category: "Data Science", description: "Storing, managing, and querying large datasets for data science pipelines." },
+  { code: "01:198:439", name: "Introduction to Data Science", category: "Data Science", description: "The end-to-end data science workflow: cleaning, analysis, modeling, and communication." },
+  { code: "04:189:220", name: "Data in Context", category: "Data Science", description: "How data is produced, contextualized, and used responsibly across domains." },
   { code: "01:220:103", name: "Introduction to Macroeconomics", category: "Economics", description: "Aggregate output, inflation, unemployment, and how fiscal and monetary policy shape the economy." },
   { code: "01:220:102", name: "Introduction to Microeconomics", category: "Economics", description: "Supply and demand, consumer and producer behavior, market efficiency, and the effects of policy." },
   { code: "01:220:321", name: "Intermediate Macroeconomic Analysis", category: "Economics", description: "Economic growth, business cycles, and macroeconomic models of output, employment, and prices." },
@@ -247,7 +261,7 @@ function CoursesSection() {
       <SectionHeading eyebrow="Coursework" title="Courses & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
       <div className="mb-7 flex flex-wrap gap-2" aria-label="Filter courses">{categories.map((category) => <Button key={category} variant="filter" data-active={filter === category} onClick={() => setFilter(category)}>{category}</Button>)}</div>
       <div className="grid gap-4 md:grid-cols-2">{visibleCourses.map((course) => (
-        <article key={course.code} className="portfolio-card p-6">
+        <article key={`${course.code}-${course.name}`} className="portfolio-card p-6">
           <div className="mb-5 flex items-start justify-between gap-4"><span className="font-mono text-sm font-semibold text-primary">{course.code}</span><span className="rounded-sm bg-secondary px-2.5 py-1 text-xs text-muted-foreground">{course.category}</span></div>
           <h2 className="font-display text-xl font-semibold">{course.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
         </article>
