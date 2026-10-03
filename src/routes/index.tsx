@@ -176,7 +176,13 @@ function SectionHeading({ eyebrow, title, description }: { eyebrow: string; titl
 }
 
 function AboutSection({ onViewWork }: { onViewWork: () => void }) {
-  const interests = ["Artificial Intelligence", "Backend Development", "Frontend Development", "Data", "Emerging Technology"];
+  const interests = [
+    { title: "Artificial Intelligence", why: "Placeholder — a moment from [course/class or childhood moment] where I first saw how intelligent software could change how people work and what that made me want to build." },
+    { title: "Backend Development", why: "Placeholder — the experience of [a project or outage] that taught me the invisible work behind reliable systems is what keeps people's trust in a product." },
+    { title: "Frontend Development", why: "Placeholder — watching [a person or group] struggle with an interface and realizing that thoughtful design is how software earns the patience it asks of people." },
+    { title: "Data", why: "Placeholder — the day [an assignment or research moment] showed me that clean, honest data changes decisions faster than arguments do." },
+    { title: "Emerging Technology", why: "Placeholder — why I keep exploring new tools even when they aren't required, and how [a specific moment] convinced me curiosity compounds." },
+  ];
   return (
     <section>
       <div className="grid items-center gap-10 xl:grid-cols-[1fr_340px] xl:gap-16">
@@ -196,14 +202,35 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
         </div>
       </div>
 
-      <div className="mt-16 grid gap-8 border-t border-border pt-10 lg:grid-cols-[1fr_auto]">
-        <div><h2 className="font-display text-lg font-semibold">Areas of interest</h2><div className="mt-4 flex flex-wrap gap-2">{interests.map((interest) => <span key={interest} className="rounded-md border border-border bg-secondary px-3 py-2 text-sm text-secondary-foreground">{interest}</span>)}</div></div>
-        <div><h2 className="font-display text-lg font-semibold">Connect</h2><div className="mt-4 flex gap-2">
-          <Button variant="iconOutline" size="icon" asChild><a href="https://github.com" aria-label="GitHub"><Github /></a></Button>
-          <Button variant="iconOutline" size="icon" asChild><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin /></a></Button>
-          <Button variant="iconOutline" size="icon" asChild><a href="#resume" aria-label="Resume"><Download /></a></Button>
-          <Button variant="iconOutline" size="icon" asChild><a href="mailto:alex@example.com" aria-label="Email"><Mail /></a></Button>
-        </div></div>
+      <div className="mt-16 border-t border-border pt-10">
+        <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase text-primary">My why</p>
+            <h2 className="font-display text-2xl font-semibold sm:text-3xl">Why I’m drawn to this work</h2>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">Placeholder — your personal story goes here. A short paragraph that sets up the five “why” cards below: the moment, person, or experience that got you interested in building software, and what keeps you here.</p>
+          </div>
+          <div>
+            <h2 className="font-display text-lg font-semibold">Connect</h2>
+            <div className="mt-4 flex gap-2">
+              <Button variant="iconOutline" size="icon" asChild><a href="https://github.com" aria-label="GitHub"><Github /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="#resume" aria-label="Resume"><Download /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="mailto:alex@example.com" aria-label="Email"><Mail /></a></Button>
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {interests.map((interest, index) => (
+            <article key={interest.title} className="portfolio-card p-6">
+              <div className="mb-4 flex items-center justify-between">
+                <span className="font-mono text-xs font-semibold text-primary">{String(index + 1).padStart(2, "0")}</span>
+                <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
+              </div>
+              <h3 className="font-display text-lg font-semibold">{interest.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{interest.why}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
