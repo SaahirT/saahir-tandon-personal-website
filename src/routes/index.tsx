@@ -261,7 +261,7 @@ function CoursesSection() {
       <SectionHeading eyebrow="Coursework" title="Courses & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
       <div className="mb-7 flex flex-wrap gap-2" aria-label="Filter courses">{categories.map((category) => <Button key={category} variant="filter" data-active={filter === category} onClick={() => setFilter(category)}>{category}</Button>)}</div>
       <div className="grid gap-4 md:grid-cols-2">{visibleCourses.map((course) => (
-        <article key={course.code} className="portfolio-card p-6">
+        <article key={`${course.code}-${course.name}`} className="portfolio-card p-6">
           <div className="mb-5 flex items-start justify-between gap-4"><span className="font-mono text-sm font-semibold text-primary">{course.code}</span><span className="rounded-sm bg-secondary px-2.5 py-1 text-xs text-muted-foreground">{course.category}</span></div>
           <h2 className="font-display text-xl font-semibold">{course.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
         </article>
