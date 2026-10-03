@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useState, type ComponentType } from "react";
 
-import profileImage from "@/assets/profile-placeholder.jpg";
+import headshotAsset from "@/assets/saahir-tandon-headshot.jpeg.asset.json";
 import campusDataImage from "@/assets/project-campus-data.jpg";
 import researchAssistantImage from "@/assets/project-research-assistant.jpg";
 import { Button } from "@/components/ui/button";
@@ -77,9 +77,9 @@ const projects = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Alex Carter — Student & Software Developer" },
-      { name: "description", content: "Portfolio of Alex Carter, a computer science student building thoughtful software across AI, data, and the web." },
-      { property: "og:title", content: "Alex Carter — Student & Software Developer" },
+      { title: "Saahir Tandon — Student & Software Developer" },
+      { name: "description", content: "Portfolio of Saahir Tandon, a computer science student at Rutgers University–New Brunswick building thoughtful software across AI, data, and the web." },
+      { property: "og:title", content: "Saahir Tandon — Student & Software Developer" },
       { property: "og:description", content: "Selected coursework, experience, and software projects across AI, data, and the web." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -135,8 +135,8 @@ function PortfolioSite() {
 function Brand() {
   return (
     <div className="flex items-center gap-3">
-      <div className="grid size-9 place-items-center rounded-md border border-primary/30 bg-primary/10 text-sm font-bold text-primary">AC</div>
-      <div><p className="font-display text-sm font-semibold text-foreground">Alex Carter</p><p className="text-xs text-muted-foreground">Student & Developer</p></div>
+      <div className="grid size-9 place-items-center rounded-md border border-primary/30 bg-primary/10 text-sm font-bold text-primary">ST</div>
+      <div><p className="font-display text-sm font-semibold text-foreground">Saahir Tandon</p><p className="text-xs text-muted-foreground">Student & Developer</p></div>
     </div>
   );
 }
@@ -150,7 +150,7 @@ function SidebarContent({ activeSection, onSelect }: { activeSection: SectionId;
       </nav>
       <div className="border-t border-border p-6">
         <p className="mb-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary shadow-[0_0_10px_var(--primary)]" />Available for opportunities</p>
-        <p className="text-xs leading-relaxed text-muted-foreground">Based in Boston · Open to internships and collaborative projects.</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">Central New Jersey • NYC / NJ / Philadelphia · Open to internships and collaborative projects.</p>
       </div>
     </>
   );
@@ -188,9 +188,9 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
       <div className="grid items-center gap-10 xl:grid-cols-[1fr_340px] xl:gap-16">
         <div>
           <p className="mb-5 flex items-center gap-2 font-mono text-xs font-semibold uppercase text-primary"><span className="h-px w-8 bg-primary" />Hello, I’m</p>
-          <h1 className="font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl xl:text-7xl">Alex Carter<span className="text-highlight">.</span></h1>
-          <p className="mt-6 max-w-2xl text-xl leading-8 text-foreground/85">A computer science student turning curious questions into useful, well-crafted software.</p>
-          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I’m currently completing my undergraduate degree while exploring the intersection of intelligent systems, dependable backend engineering, thoughtful interfaces, and data-informed products.</p>
+          <h1 className="font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl xl:text-7xl">Saahir Tandon<span className="text-highlight">.</span></h1>
+          <p className="mt-6 max-w-2xl text-xl leading-8 text-foreground/85">A Computer Science student at Rutgers University–New Brunswick turning curious questions into useful, well-crafted software.</p>
+          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I started at Rutgers in September 2023 and am expected to graduate in May 2027 with a major in Computer Science and a minor in Data Science (Economics Track). I’m exploring the intersection of intelligent systems, dependable backend engineering, thoughtful interfaces, and data-informed products.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button onClick={onViewWork}>View my work <ArrowUpRight /></Button>
             <Button variant="outline" asChild><a href="mailto:alex@example.com">Get in touch <Mail /></a></Button>
@@ -198,7 +198,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
         </div>
         <div className="relative mx-auto w-full max-w-xs xl:max-w-none">
           <div className="absolute -inset-3 rounded-lg border border-primary/20" aria-hidden="true" />
-          <img src={profileImage} alt="Placeholder portrait of Alex Carter" width={896} height={1152} className="relative aspect-[4/5] w-full rounded-lg border border-border object-cover object-top" />
+          <img src={headshotAsset.url} alt="Portrait of Saahir Tandon" width={800} height={800} className="relative aspect-[4/5] w-full rounded-lg border border-border object-cover object-top" />
         </div>
       </div>
 
