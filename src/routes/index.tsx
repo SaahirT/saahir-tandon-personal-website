@@ -71,7 +71,7 @@ const experiences = [
 const projects = [
   { name: "Campus Insights", description: "A data platform that helps university teams understand enrollment, resources, and student outcomes.", tech: ["React", "TypeScript", "PostgreSQL"], image: campusDataImage, live: true },
   { name: "Research Copilot", description: "An AI-assisted workspace for organizing papers, extracting findings, and building structured research notes.", tech: ["Python", "FastAPI", "LLM APIs"], image: researchAssistantImage, live: true },
-  { name: "Economic Signals API", description: "A documented backend service that aggregates public indicators into analysis-ready time series.", tech: ["Node.js", "REST", "Redis"], live: false },
+  { name: "Economic Signals API", description: "A documented backend service that aggregates public indicators into analysis-ready time series.", tech: ["Node.js", "REST", "Redis"], image: undefined, live: false },
 ] as const;
 
 export const Route = createFileRoute("/")({
