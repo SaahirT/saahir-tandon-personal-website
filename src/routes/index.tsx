@@ -118,8 +118,10 @@ function PortfolioSite() {
         </div>
       )}
 
-      <main className="min-h-screen lg:ml-72">
-        <div key={activeSection} className="section-enter mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
+      <main className="relative min-h-screen overflow-hidden lg:ml-72">
+        <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary/5 blur-[120px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-32 -left-24 size-72 rounded-full bg-highlight/4 blur-[100px]" aria-hidden="true" />
+        <div key={activeSection} className="section-enter relative mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
           {activeSection === "about" && <AboutSection onViewWork={() => selectSection("portfolio")} />}
           {activeSection === "courses" && <CoursesSection />}
           {activeSection === "experience" && <ExperienceSection />}
