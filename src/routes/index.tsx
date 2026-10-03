@@ -39,7 +39,7 @@ const courses = [
   { code: "01:198:344", name: "Design and Analysis of Computer Algorithms", category: "Computer Science", description: "Greedy methods, divide-and-conquer, dynamic programming, and complexity analysis." },
   { code: "01:198:205", name: "Introduction to Discrete Structures I", category: "Computer Science", description: "Logic, sets, functions, and proof techniques — the math underpinning computer science." },
   { code: "01:198:206", name: "Introduction to Discrete Structures II", category: "Computer Science", description: "Graphs, counting, and discrete probability models for computing." },
-  { code: "01:640:250", name: "Introductory to Linear Algebra", category: "Computer Science", description: "Matrices, vector spaces, and eigenvalues — the linear algebra behind modern data methods." },
+  { code: "01:640:250", name: "Introductory Linear Algebra", category: "Computer Science", description: "Matrices, vector spaces, and eigenvalues — the linear algebra behind modern data methods." },
   { code: "01:730:329", name: "Minds, Machines, and Persons", category: "Computer Science", description: "Philosophy of mind and AI: intelligence, consciousness, and what machines can be." },
   { code: "01:198:214", name: "Systems Programming", category: "Computer Science", description: "C programming, Unix tools, memory management, and systems-level software." },
   { code: "01:198:336", name: "Principles of Information and Data Management", category: "Computer Science", description: "Relational databases, SQL, data models, and how information systems are built." },
@@ -255,7 +255,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
 function CoursesSection() {
   const categories: CourseCategory[] = ["All", "Computer Science", "Data Science", "Economics"];
   const [filter, setFilter] = useState<CourseCategory>("All");
-  const visibleCourses = filter === "All" ? courses : courses.filter((course) => course.category === filter);
+  const visibleCourses = (filter === "All" ? [...courses] : courses.filter((course) => course.category === filter)).sort((a, b) => a.name.localeCompare(b.name));
   return (
     <section>
       <SectionHeading eyebrow="Coursework" title="Courses & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
