@@ -4,12 +4,10 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Code2,
-  Download,
   Github,
   GraduationCap,
   Layers3,
   Linkedin,
-  Mail,
   Menu,
   UserRound,
   X,
@@ -17,6 +15,10 @@ import {
 import { useState, type ComponentType } from "react";
 
 import headshotAsset from "@/assets/saahir-tandon-headshot.jpeg.asset.json";
+import chirpLogo from "@/assets/chirp-ai-logo.jpeg.asset.json";
+import handshakeLogo from "@/assets/handshake-ai-logo.jpeg.asset.json";
+import chirpMainMenu from "@/assets/chirp-main-menu.jpeg.asset.json";
+import chirpPoiMenu from "@/assets/chirp-poi-menu.jpeg.asset.json";
 import campusDataImage from "@/assets/project-campus-data.jpg";
 import researchAssistantImage from "@/assets/project-research-assistant.jpg";
 import { Button } from "@/components/ui/button";
@@ -33,54 +35,58 @@ const navigation: { id: SectionId; label: string; icon: ComponentType<{ classNam
 ];
 
 const courses = [
-  { code: "01:198:111", name: "Introduction to Computer Science", category: "Computer Science", description: "Programming fundamentals, problem-solving, and software design with Java." },
-  { code: "01:198:210", name: "Data Structures", category: "Computer Science", description: "Lists, trees, hash tables, and graphs — the structures behind efficient programs." },
-  { code: "01:198:211", name: "Computer Architecture", category: "Computer Science", description: "Processor design, memory hierarchies, and how software meets hardware." },
-  { code: "01:198:344", name: "Design and Analysis of Computer Algorithms", category: "Computer Science", description: "Greedy methods, divide-and-conquer, dynamic programming, and complexity analysis." },
-  { code: "01:198:205", name: "Introduction to Discrete Structures I", category: "Computer Science", description: "Logic, sets, functions, and proof techniques — the math underpinning computer science." },
-  { code: "01:198:206", name: "Introduction to Discrete Structures II", category: "Computer Science", description: "Graphs, counting, and discrete probability models for computing." },
-  { code: "01:640:250", name: "Introductory Linear Algebra", category: "Computer Science", description: "Matrices, vector spaces, and eigenvalues — the linear algebra behind modern data methods." },
-  { code: "01:730:329", name: "Minds, Machines, and Persons", category: "Computer Science", description: "Philosophy of mind and AI: intelligence, consciousness, and what machines can be." },
-  { code: "01:198:214", name: "Systems Programming", category: "Computer Science", description: "C programming, Unix tools, memory management, and systems-level software." },
-  { code: "01:198:336", name: "Principles of Information and Data Management", category: "Computer Science", description: "Relational databases, SQL, data models, and how information systems are built." },
-  { code: "01:640:151", name: "Calculus I", category: "Computer Science", description: "Limits, derivatives, and single-variable calculus with applications." },
-  { code: "01:640:152", name: "Calculus II", category: "Computer Science", description: "Integration techniques, sequences and series, and further applications." },
-  { code: "01:198:142", name: "Data 101", category: "Data Science", description: "Foundational data literacy: understanding, analyzing, and communicating with data." },
-  { code: "01:960:291", name: "Statistical Inference for Data Science", category: "Data Science", description: "Estimation, hypothesis testing, and statistical reasoning for data analysis." },
-  { code: "01:198:210", name: "Data Management for Data Science", category: "Data Science", description: "Storing, managing, and querying large datasets for data science pipelines." },
-  { code: "01:198:439", name: "Introduction to Data Science", category: "Data Science", description: "The end-to-end data science workflow: cleaning, analysis, modeling, and communication." },
-  { code: "04:189:220", name: "Data in Context", category: "Data Science", description: "How data is produced, contextualized, and used responsibly across domains." },
-  { code: "01:220:103", name: "Introduction to Macroeconomics", category: "Economics", description: "Aggregate output, inflation, unemployment, and how fiscal and monetary policy shape the economy." },
-  { code: "01:220:102", name: "Introduction to Microeconomics", category: "Economics", description: "Supply and demand, consumer and producer behavior, market efficiency, and the effects of policy." },
-  { code: "01:220:321", name: "Intermediate Macroeconomic Analysis", category: "Economics", description: "Economic growth, business cycles, and macroeconomic models of output, employment, and prices." },
-  { code: "01:220:320", name: "Intermediate Microeconomic Analysis", category: "Economics", description: "Consumer behavior, market structure, incentives, and strategic decision-making." },
-  { code: "01:220:322", name: "Econometrics", category: "Economics", description: "Causal inference and regression methods for analyzing real-world economic data." },
+  { code: "01:198:111", name: "Introduction to Computer Science", categories: ["Computer Science"], description: "Introduces programming and algorithmic problem-solving using Java, including object-oriented programming, recursion, searching, sorting, debugging, and introductory data structures." },
+  { code: "01:198:112", name: "Data Structures", categories: ["Computer Science"], description: "Uses Java to study linked lists, stacks, queues, trees, graphs, hashing, searching, sorting, and the runtime tradeoffs of different data structures and algorithms." },
+  { code: "01:198:211", name: "Computer Architecture", categories: ["Computer Science"], description: "Explores how computer hardware and software interact through C and assembly language, covering processors, memory, caches, digital logic, data representation, and computer arithmetic." },
+  { code: "01:198:344", name: "Design and Analysis of Computer Algorithms", categories: ["Computer Science"], description: "Covers algorithm design and complexity analysis through techniques such as greedy algorithms, dynamic programming, divide-and-conquer, graph algorithms, reductions, and NP-completeness." },
+  { code: "01:198:205", name: "Introduction to Discrete Structures I", categories: ["Computer Science"], description: "Develops the mathematical foundations of computer science through logic, sets, functions, relations, induction, recursive definitions, and mathematical proofs." },
+  { code: "01:198:206", name: "Introduction to Discrete Structures II", categories: ["Computer Science"], description: "Covers combinatorics, recurrence relations, discrete probability, random variables, probability distributions, and graph theory including trees, paths, and connectivity." },
+  { code: "01:640:250", name: "Introductory Linear Algebra", categories: ["Computer Science"], description: "Covers vectors, matrices, Gaussian elimination, linear transformations, vector spaces, basis and dimension, determinants, eigenvalues, eigenvectors, diagonalization, and orthogonality." },
+  { code: "01:730:329", name: "Minds, Machines, and Persons", categories: ["Computer Science"], description: "Explores philosophy of mind and artificial intelligence through topics including consciousness, mental representation, computational cognition, machine intelligence, mind uploading, and the ethics of superintelligent AI." },
+  { code: "01:198:214", name: "Systems Programming", categories: ["Computer Science"], description: "Uses C and Unix to study memory management, system calls, I/O, caching, multithreading, shell scripting, debugging, profiling, testing, and performance optimization." },
+  { code: "01:198:336", name: "Principles of Information and Data Management", categories: ["Computer Science"], description: "Covers relational databases, structured and semi-structured data, querying, XML, conceptual modeling, schema design, transactions, security, reliability, optimization, and information integration." },
+  { code: "01:640:151", name: "Calculus I", categories: ["Computer Science"], description: "Covers limits, derivatives, differential calculus, optimization, the Mean Value Theorem, and an introduction to integration for single-variable functions." },
+  { code: "01:640:152", name: "Calculus II", categories: ["Computer Science"], description: "Extends calculus through integration techniques and applications, infinite and power series, parametric curves, polar coordinates, and complex numbers." },
+  { code: "01:198:142", name: "Data 101", categories: ["Data Science"], description: "Introduces data literacy, statistics, probability, data analysis, and visualization using the R programming language to analyze real-world datasets." },
+  { code: "01:960:291", name: "Statistical Inference for Data Science", categories: ["Data Science"], description: "Introduces probability and statistical inference for data science, including regression, resampling, confidence intervals, hypothesis testing, and probability distributions." },
+  { code: "01:198:210", name: "Data Management for Data Science", categories: ["Computer Science", "Data Science"], description: "Uses Python, Jupyter, and data libraries to acquire, clean, curate, visualize, and manage real-world datasets, including working with databases and structured data." },
+  { code: "01:198:439", name: "Introduction to Data Science", categories: ["Computer Science", "Data Science"], description: "Uses Python, Pandas, NumPy, Matplotlib/Seaborn, and TensorFlow to explore data preprocessing, visualization, regression, classification, clustering, machine learning, recommender systems, deep learning, and LLMs." },
+  { code: "04:547:225", name: "Data in Context", categories: ["Data Science"], description: "Examines data science through its social context, focusing on the ethical, legal, social, and political implications of data collection, algorithms, and data-driven decision making." },
+  { code: "01:220:103", name: "Introduction to Macroeconomics", categories: ["Economics"], description: "Introduces national income, employment, inflation, unemployment, monetary and fiscal policy, banking, international trade, and economic growth." },
+  { code: "01:220:102", name: "Introduction to Microeconomics", categories: ["Economics"], description: "Introduces supply and demand, market pricing, resource allocation, competition, monopoly, government intervention, externalities, and economic efficiency." },
+  { code: "01:220:321", name: "Intermediate Macroeconomic Analysis", categories: ["Economics"], description: "Studies modern and classical macroeconomic models of national income, economic growth, stabilization, unemployment, and inflation." },
+  { code: "01:220:320", name: "Intermediate Microeconomics Analysis", categories: ["Economics"], description: "Uses mathematical models to analyze consumer and firm decision-making, supply and demand, competitive and monopolistic markets, general equilibrium, and welfare economics." },
+  { code: "01:220:322", name: "Econometrics", categories: ["Economics"], description: "Applies statistical methods to economic data, focusing on ordinary least squares regression, hypothesis testing, prediction, time-series methods, and econometric modeling using statistical software." },
 ] as const;
 
 const experiences = [
   {
-    initials: "NT",
-    role: "Software Engineering Intern",
-    company: "Northstar Technologies",
-    dates: "May 2026 — Aug 2026",
-    location: "New York, NY · Hybrid",
-    points: ["Built internal APIs and automated reporting workflows used by three product teams.", "Improved data processing reliability through typed validation and integration tests."],
+    role: "AI Evaluation Specialist",
+    company: "Handshake AI Fellowship",
+    dates: "Sep 2026 — Present",
+    location: "San Francisco, CA · Remote",
+    logo: handshakeLogo.url,
+    points: ["Contributed to an enterprise AI model alignment initiative aimed at evaluating and benchmarking next-generation Large Language Models (LLMs).", "Designed, executed, and audited complex evaluation tasks across varied formats to benchmark model reasoning accuracy, structural consistency, and format compliance.", "Delivered structured error analysis and fine-tuning feedback to construct precise ground-truth evaluation datasets for downstream Supervised Fine-Tuning (SFT) pipelines."],
   },
   {
-    initials: "DL",
-    role: "Undergraduate Research Assistant",
-    company: "University Data Lab",
-    dates: "Sep 2025 — Present",
-    location: "Boston, MA",
-    points: ["Developed Python pipelines for cleaning and analyzing public policy datasets.", "Presented research findings through interactive visualizations and concise technical reports."],
+    role: "AI Data Annotation Fellow",
+    company: "Handshake AI Fellowship",
+    dates: "Aug 2026 — Sep 2026",
+    location: "San Francisco, CA · Remote",
+    logo: handshakeLogo.url,
+    points: ["Contributed to an enterprise AI data initiative aimed at training next-generation Automatic Speech Recognition (ASR) models.", "Transcribed, verified, and annotated high-volume video and audio datasets to construct precise ground-truth training data.", "Delivered standardized, precise text-audio ground-truth to ensure high-quality dataset deliverables for downstream training pipelines."],
   },
   {
-    initials: "TC",
-    role: "Web Development Lead",
-    company: "Technology Club",
-    dates: "Jan 2025 — May 2026",
-    location: "Boston, MA",
-    points: ["Led a four-person team delivering event and member tools for the student community.", "Introduced reusable components and a lightweight review process for new contributors."],
+    role: "Full Stack Software Engineer Intern",
+    company: "Chirp AI",
+    dates: "Dec 2025 — Mar 2026",
+    location: "San Francisco, CA · Remote",
+    logo: chirpLogo.url,
+    points: ["Built core cross-platform features and backend architecture for an iOS application focused on family-friendly activity searches.", "Developed interactive map APIs and custom filtering logic in React Native (Expo) while architecting a relational Supabase (PostgreSQL) backend with secure OAuth pipelines.", "Shipped production-ready UI screens and CRUD endpoints, enabling location filtering and secure user session management."],
+    screenshots: [
+      { src: chirpMainMenu.url, alt: "Chirp AI map-based main menu showing nearby family-friendly places", label: "Main menu" },
+      { src: chirpPoiMenu.url, alt: "Chirp AI place details menu with reviews and recommendations", label: "Place details" },
+    ],
   },
 ];
 
@@ -138,7 +144,7 @@ function PortfolioSite() {
         <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary/5 blur-[120px]" aria-hidden="true" />
         <div className="pointer-events-none absolute -bottom-32 -left-24 size-72 rounded-full bg-highlight/4 blur-[100px]" aria-hidden="true" />
         <div key={activeSection} className="section-enter relative mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
-          {activeSection === "about" && <AboutSection onViewWork={() => selectSection("portfolio")} />}
+      {activeSection === "about" && <AboutSection onViewWork={() => selectSection("portfolio")} />}
           {activeSection === "courses" && <CoursesSection />}
           {activeSection === "experience" && <ExperienceSection />}
           {activeSection === "portfolio" && <PortfolioSection />}
@@ -205,11 +211,12 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
         <div>
           <p className="mb-5 flex items-center gap-2 font-mono text-xs font-semibold uppercase text-primary"><span className="h-px w-8 bg-primary" />Hello, I’m</p>
           <h1 className="font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl xl:text-7xl">Saahir Tandon<span className="text-highlight">.</span></h1>
+          <p className="mt-3 font-mono text-sm text-muted-foreground">Pronounced saw-hair</p>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-foreground/85">A Computer Science student at Rutgers University–New Brunswick turning curious questions into useful, well-crafted software.</p>
           <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I started at Rutgers in September 2023 and am expected to graduate in May 2027 with a major in Computer Science and a minor in Data Science (Economics Track). I’m exploring the intersection of intelligent systems, dependable backend engineering, thoughtful interfaces, and data-informed products.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button onClick={onViewWork}>View my work <ArrowUpRight /></Button>
-            <Button variant="outline" asChild><a href="mailto:alex@example.com">Get in touch <Mail /></a></Button>
+            <Button variant="outline" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <Linkedin /></a></Button>
           </div>
         </div>
         <div className="relative mx-auto w-full max-w-xs xl:max-w-none">
@@ -228,10 +235,8 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
           <div>
             <h2 className="font-display text-lg font-semibold">Connect</h2>
             <div className="mt-4 flex gap-2">
-              <Button variant="iconOutline" size="icon" asChild><a href="https://github.com" aria-label="GitHub"><Github /></a></Button>
-              <Button variant="iconOutline" size="icon" asChild><a href="https://linkedin.com" aria-label="LinkedIn"><Linkedin /></a></Button>
-              <Button variant="iconOutline" size="icon" asChild><a href="#resume" aria-label="Resume"><Download /></a></Button>
-              <Button variant="iconOutline" size="icon" asChild><a href="mailto:alex@example.com" aria-label="Email"><Mail /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a></Button>
             </div>
           </div>
         </div>
@@ -255,14 +260,14 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
 function CoursesSection() {
   const categories: CourseCategory[] = ["All", "Computer Science", "Data Science", "Economics"];
   const [filter, setFilter] = useState<CourseCategory>("All");
-  const visibleCourses = (filter === "All" ? [...courses] : courses.filter((course) => course.category === filter)).sort((a, b) => a.name.localeCompare(b.name));
+  const visibleCourses = (filter === "All" ? [...courses] : courses.filter((course) => (course.categories as readonly string[]).includes(filter))).sort((a, b) => a.name.localeCompare(b.name));
   return (
     <section>
       <SectionHeading eyebrow="Coursework" title="Courses & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
       <div className="mb-7 flex flex-wrap gap-2" aria-label="Filter courses">{categories.map((category) => <Button key={category} variant="filter" data-active={filter === category} onClick={() => setFilter(category)}>{category}</Button>)}</div>
       <div className="grid gap-4 md:grid-cols-2">{visibleCourses.map((course) => (
         <article key={`${course.code}-${course.name}`} className="portfolio-card p-6">
-          <div className="mb-5 flex items-start justify-between gap-4"><span className="font-mono text-sm font-semibold text-primary">{course.code}</span><span className="rounded-sm bg-secondary px-2.5 py-1 text-xs text-muted-foreground">{course.category}</span></div>
+          <div className="mb-5 font-mono text-sm font-semibold text-primary">{course.code}</div>
           <h2 className="font-display text-xl font-semibold">{course.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
         </article>
       ))}</div>
@@ -273,14 +278,14 @@ function CoursesSection() {
 function ExperienceSection() {
   return (
     <section>
-      <SectionHeading eyebrow="Experience" title="Where I’ve contributed" description="Practical experience building reliable tools, working with data, and collaborating with multidisciplinary teams." />
+      <SectionHeading eyebrow="Experience" title="Where I’ve contributed" description="Building software and contributing to AI evaluation and data initiatives." />
       <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-border">{experiences.map((experience, index) => (
         <article key={experience.role} className="relative grid gap-5 border-b border-border py-8 first:pt-2 sm:grid-cols-[56px_1fr]">
-          <div className="z-10 grid size-14 place-items-center rounded-md border border-primary/25 bg-secondary font-mono text-sm font-bold text-primary">{experience.initials}</div>
+           <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
           <div>
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between"><div><h2 className="font-display text-xl font-semibold">{experience.role}</h2><p className="mt-1 text-sm font-medium text-primary">{experience.company}</p></div><div className="text-sm text-muted-foreground md:text-right"><p>{experience.dates}</p><p className="mt-1">{experience.location}</p></div></div>
             <ul className="mt-5 space-y-2">{experience.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-muted-foreground"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />{point}</li>)}</ul>
-            {index === 0 && <span className="mt-4 inline-block text-xs font-medium text-highlight">Most recent</span>}
+             {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-md" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[9/13] w-full rounded-md border border-border object-cover object-top transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
           </div>
         </article>
       ))}</div>
