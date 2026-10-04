@@ -282,12 +282,12 @@ function ExperienceSection() {
     <section>
       <SectionHeading eyebrow="Experience" title="Where I’ve contributed" description="Building software and contributing to AI evaluation and data initiatives." />
       <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-border">{experiences.map((experience) => (
-        <article key={experience.role} className="relative grid gap-5 border-b border-border py-8 first:pt-2 sm:grid-cols-[56px_1fr]">
+         <article key={experience.role} className="relative grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-b border-border py-8 first:pt-2">
            <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
           <div>
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between"><div><h2 className="font-display text-xl font-semibold">{experience.role}</h2><p className="mt-1 text-sm font-medium text-primary">{experience.company}</p></div><div className="text-sm text-muted-foreground md:text-right"><p>{experience.dates}</p><p className="mt-1">{experience.location}</p></div></div>
             <ul className="mt-5 space-y-2">{experience.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-muted-foreground"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />{point}</li>)}</ul>
-             {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-md" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[9/13] w-full rounded-md border border-border object-cover object-top transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
+             {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-sm" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[591/1280] w-full rounded-md border border-border bg-secondary object-contain transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
           </div>
         </article>
       ))}</div>
