@@ -4,6 +4,7 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Code2,
+  Download,
   Github,
   GraduationCap,
   Layers3,
@@ -237,6 +238,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
             <div className="mt-4 flex gap-2">
               <Button variant="iconOutline" size="icon" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a></Button>
               <Button variant="iconOutline" size="icon" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a></Button>
+              <Button variant="iconOutline" size="icon" asChild><a href="#resume" aria-label="Resume (placeholder)" title="Resume (placeholder)"><Download /></a></Button>
             </div>
           </div>
         </div>
@@ -279,7 +281,7 @@ function ExperienceSection() {
   return (
     <section>
       <SectionHeading eyebrow="Experience" title="Where I’ve contributed" description="Building software and contributing to AI evaluation and data initiatives." />
-      <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-border">{experiences.map((experience, index) => (
+      <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-border">{experiences.map((experience) => (
         <article key={experience.role} className="relative grid gap-5 border-b border-border py-8 first:pt-2 sm:grid-cols-[56px_1fr]">
            <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
           <div>
@@ -304,7 +306,7 @@ function PortfolioSection() {
             <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-primary">0{index + 1}</span><Code2 className="size-5 text-muted-foreground" /></div>
             <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
-            <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href="https://github.com"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo">Live demo <ArrowUpRight /></a></Button>}</div>
+             <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo">Live demo <ArrowUpRight /></a></Button>}</div>
           </div>
         </article>
       ))}</div>
