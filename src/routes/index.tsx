@@ -6,7 +6,6 @@ import {
   Code2,
   Download,
   Github,
-  GraduationCap,
   Layers3,
   Linkedin,
   Menu,
@@ -37,7 +36,7 @@ const navigation: { id: SectionId; label: string; icon: ComponentType<{ classNam
 
 const courses = [
   { code: "01:198:111", name: "Introduction to Computer Science", categories: ["Computer Science"], description: "Introduces programming and algorithmic problem-solving using Java, including object-oriented programming, recursion, searching, sorting, debugging, and introductory data structures." },
-  { code: "01:198:112", name: "Data Structures", categories: ["Computer Science"], description: "Uses Java to study linked lists, stacks, queues, trees, graphs, hashing, searching, sorting, and the runtime tradeoffs of different data structures and algorithms." },
+  { code: "01:198:210", name: "Data Structures", categories: ["Computer Science"], description: "Uses Java to study linked lists, stacks, queues, trees, graphs, hashing, searching, sorting, and the runtime tradeoffs of different data structures and algorithms." },
   { code: "01:198:211", name: "Computer Architecture", categories: ["Computer Science"], description: "Explores how computer hardware and software interact through C and assembly language, covering processors, memory, caches, digital logic, data representation, and computer arithmetic." },
   { code: "01:198:344", name: "Design and Analysis of Computer Algorithms", categories: ["Computer Science"], description: "Covers algorithm design and complexity analysis through techniques such as greedy algorithms, dynamic programming, divide-and-conquer, graph algorithms, reductions, and NP-completeness." },
   { code: "01:198:205", name: "Introduction to Discrete Structures I", categories: ["Computer Science"], description: "Develops the mathematical foundations of computer science through logic, sets, functions, relations, induction, recursive definitions, and mathematical proofs." },
@@ -52,11 +51,11 @@ const courses = [
   { code: "01:960:291", name: "Statistical Inference for Data Science", categories: ["Data Science"], description: "Introduces probability and statistical inference for data science, including regression, resampling, confidence intervals, hypothesis testing, and probability distributions." },
   { code: "01:198:210", name: "Data Management for Data Science", categories: ["Computer Science", "Data Science"], description: "Uses Python, Jupyter, and data libraries to acquire, clean, curate, visualize, and manage real-world datasets, including working with databases and structured data." },
   { code: "01:198:439", name: "Introduction to Data Science", categories: ["Computer Science", "Data Science"], description: "Uses Python, Pandas, NumPy, Matplotlib/Seaborn, and TensorFlow to explore data preprocessing, visualization, regression, classification, clustering, machine learning, recommender systems, deep learning, and LLMs." },
-  { code: "04:547:225", name: "Data in Context", categories: ["Data Science"], description: "Examines data science through its social context, focusing on the ethical, legal, social, and political implications of data collection, algorithms, and data-driven decision making." },
+  { code: "04:189:220", name: "Data in Context", categories: ["Data Science"], description: "Examines data science through its social context, focusing on the ethical, legal, social, and political implications of data collection, algorithms, and data-driven decision making." },
   { code: "01:220:103", name: "Introduction to Macroeconomics", categories: ["Economics"], description: "Introduces national income, employment, inflation, unemployment, monetary and fiscal policy, banking, international trade, and economic growth." },
   { code: "01:220:102", name: "Introduction to Microeconomics", categories: ["Economics"], description: "Introduces supply and demand, market pricing, resource allocation, competition, monopoly, government intervention, externalities, and economic efficiency." },
   { code: "01:220:321", name: "Intermediate Macroeconomic Analysis", categories: ["Economics"], description: "Studies modern and classical macroeconomic models of national income, economic growth, stabilization, unemployment, and inflation." },
-  { code: "01:220:320", name: "Intermediate Microeconomics Analysis", categories: ["Economics"], description: "Uses mathematical models to analyze consumer and firm decision-making, supply and demand, competitive and monopolistic markets, general equilibrium, and welfare economics." },
+  { code: "01:220:320", name: "Intermediate Microeconomic Analysis", categories: ["Economics"], description: "Uses mathematical models to analyze consumer and firm decision-making, supply and demand, competitive and monopolistic markets, general equilibrium, and welfare economics." },
   { code: "01:220:322", name: "Econometrics", categories: ["Economics"], description: "Applies statistical methods to economic data, focusing on ordinary least squares regression, hypothesis testing, prediction, time-series methods, and econometric modeling using statistical software." },
 ] as const;
 
@@ -145,7 +144,7 @@ function PortfolioSite() {
         <div className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-primary/5 blur-[120px]" aria-hidden="true" />
         <div className="pointer-events-none absolute -bottom-32 -left-24 size-72 rounded-full bg-highlight/4 blur-[100px]" aria-hidden="true" />
         <div key={activeSection} className="section-enter relative mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
-      {activeSection === "about" && <AboutSection onViewWork={() => selectSection("portfolio")} />}
+          {activeSection === "about" && <AboutSection onViewWork={() => selectSection("portfolio")} />}
           {activeSection === "courses" && <CoursesSection />}
           {activeSection === "experience" && <ExperienceSection />}
           {activeSection === "portfolio" && <PortfolioSection />}
@@ -282,12 +281,12 @@ function ExperienceSection() {
     <section>
       <SectionHeading eyebrow="Experience" title="Where I’ve contributed" description="Building software and contributing to AI evaluation and data initiatives." />
       <div className="relative space-y-0 before:absolute before:bottom-8 before:left-7 before:top-8 before:w-px before:bg-border">{experiences.map((experience) => (
-         <article key={experience.role} className="relative grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-b border-border py-8 first:pt-2">
-           <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
+        <article key={experience.role} className="relative grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-b border-border py-8 first:pt-2">
+          <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
           <div>
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between"><div><h2 className="font-display text-xl font-semibold">{experience.role}</h2><p className="mt-1 text-sm font-medium text-primary">{experience.company}</p></div><div className="text-sm text-muted-foreground md:text-right"><p>{experience.dates}</p><p className="mt-1">{experience.location}</p></div></div>
             <ul className="mt-5 space-y-2">{experience.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-muted-foreground"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />{point}</li>)}</ul>
-             {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-sm" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[591/1280] w-full rounded-md border border-border bg-secondary object-contain transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
+            {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-sm" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[591/1280] w-full rounded-md border border-border bg-secondary object-contain transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
           </div>
         </article>
       ))}</div>
@@ -306,7 +305,7 @@ function PortfolioSection() {
             <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-primary">0{index + 1}</span><Code2 className="size-5 text-muted-foreground" /></div>
             <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
-             <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo">Live demo <ArrowUpRight /></a></Button>}</div>
+            <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button>}</div>
           </div>
         </article>
       ))}</div>
