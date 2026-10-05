@@ -4,7 +4,6 @@ import {
   BookOpen,
   BriefcaseBusiness,
   Code2,
-  Download,
   Github,
   GraduationCap,
   Layers3,
@@ -20,6 +19,8 @@ import chirpLogo from "@/assets/chirp-ai-logo.jpeg.asset.json";
 import handshakeLogo from "@/assets/handshake-ai-logo.jpeg.asset.json";
 import chirpMainMenu from "@/assets/chirp-main-menu.jpeg.asset.json";
 import chirpPoiMenu from "@/assets/chirp-poi-menu.jpeg.asset.json";
+import studentPerformanceImage from "@/assets/student-performance-analysis.jpeg.asset.json";
+import playerPerformanceImage from "@/assets/player-performance-intro.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 
 type SectionId = "about" | "courses" | "experience" | "portfolio";
@@ -89,8 +90,8 @@ const experiences = [
 ];
 
 const projects = [
-  { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false },
-  { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false },
+  { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false, image: studentPerformanceImage.url, imageAlt: "Histogram and box plot showing the distribution of student final grades" },
+  { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false, image: playerPerformanceImage.url, imageAlt: "Presentation title slide asking whether mental state impacts Fortnite performance" },
 ] as const;
 
 const techPattern = /\b(C\+\+|Java|Python|Jupyter|Pandas|NumPy|Matplotlib\/Seaborn|Matplotlib|Seaborn|TensorFlow|SQL|Unix|C|R)(?![a-zA-Z])/g;
@@ -175,7 +176,7 @@ function SidebarContent({ activeSection, onSelect }: { activeSection: SectionId;
       </nav>
       <div className="border-t border-border p-6">
         <p className="mb-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary shadow-[0_0_10px_var(--primary)]" />Available for opportunities</p>
-        <p className="text-xs leading-relaxed text-muted-foreground">Greater New York Metropolitan Area · Open to internships and collaborative projects.</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">Greater New York Metropolitan Area · Open to Internships, Co-ops, and Jobs.</p>
       </div>
     </>
   );
@@ -201,13 +202,6 @@ function SectionHeading({ eyebrow, title, description }: { eyebrow: string; titl
 }
 
 function AboutSection({ onViewWork }: { onViewWork: () => void }) {
-  const interests = [
-    { title: "Artificial Intelligence", why: "Tech shouldn't belong only to people who can afford thousands of dollars in gear or spend years mastering overwhelming software. AI is the ultimate equalizer — it opens doors for anyone with a great idea and the drive to pursue it, regardless of background or resources. Today that vision shapes my work at Handshake AI, where I help train and audit ASR models that precisely transcribe and time-code video and audio — think of a deaf creator editing a video without hearing the cues. My goal is simple: break down technical walls so anyone with a spark can just create." },
-    { title: "Backend Development", why: "Release week for big games was my ultimate crunch time as a creator — streaming gameplay, taking notes live, and racing to be among the first to cover new features. Watching dataminers dig into raw files to pull out exact spawn rates, damage formulas, and secret item coordinates showed me the real depth lives behind the scenes. That was my lightbulb moment: the frontend graphics are just the surface, but the real logic and magic live in the code. I love building database schemas, API pipelines, and server architectures that quietly power complex, data-rich experiences." },
-    { title: "Frontend Development", why: "There's nothing quite like opening a piece of software for the first time, seeing a wall of a hundred confusing buttons, and feeling instantly overwhelmed (looking at you, After Effects). As a beginner, clunky timelines and hidden menus made creative tools feel like puzzles I couldn't solve. Having fought with confusing software for years, I care deeply about frontends that feel smooth, simple, and natural — a powerful backend engine means little if the driver gets lost trying to find the steering wheel." },
-    { title: "Data", why: "Placeholder — your data “why” goes here: a moment when clean, honest information changed a decision for you." },
-    { title: "Emerging Technology", why: "Placeholder — why you keep exploring new tools even when they aren't required, and what convinced you curiosity compounds." },
-  ];
   return (
     <section>
       <div className="grid items-center gap-10 xl:grid-cols-[1fr_340px] xl:gap-16">
@@ -229,32 +223,46 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
       </div>
 
       <div className="mt-16 border-t border-border pt-10">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase text-primary">My why</p>
-            <h2 className="font-display text-2xl font-semibold sm:text-3xl">Why I’m drawn to this work</h2>
-            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">Growing up, my dream was to make gaming content on YouTube. Nobody around me saw content creation as a real path — so I saved loose change in NYC for basic equipment, snuck onto my dad’s laptop late at night to record, and edited video clips on school computers whenever I could squeeze in time. The hustle actually worked, but high-end hardware and expensive software kept capping what I could build. That experience is why I make software: tools should open doors, not stand in the way.</p>
+            <h2 className="font-display text-2xl font-semibold sm:text-3xl">What draws me to this work</h2>
           </div>
-          <div>
-            <h2 className="font-display text-lg font-semibold">Connect</h2>
-            <div className="mt-4 flex gap-2">
-              <Button variant="iconOutline" size="icon" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a></Button>
-              <Button variant="iconOutline" size="icon" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a></Button>
-              <Button variant="iconOutline" size="icon" asChild><a href="#resume" aria-label="Resume (placeholder)" title="Resume (placeholder)"><Download /></a></Button>
-            </div>
+          <div className="flex gap-2">
+            <Button variant="iconOutline" size="icon" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github /></a></Button>
+            <Button variant="iconOutline" size="icon" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin /></a></Button>
           </div>
         </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {interests.map((interest, index) => (
-            <article key={interest.title} className="portfolio-card p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-xs font-semibold text-highlight">{String(index + 1).padStart(2, "0")}</span>
-                <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
+
+        <div className="mt-10 max-w-4xl space-y-14">
+          <article className="border-l-2 border-highlight/70 pl-5 sm:pl-8">
+            <h3 className="font-display text-2xl font-semibold">My “WHY” for AI &amp; Machine Learning:</h3>
+            <div className="mt-5 space-y-5 text-base leading-8 text-muted-foreground">
+              <p>Growing up, my dream was always to make gaming content on YouTube. Unfortunately, my childhood was during a time when parents were pretty pessimistic about technology usage, and nobody around me viewed content creation as a real path—so I had zero support. I used to pick up loose change off the ground in NYC to save up for basic equipment, sneak onto my dad’s laptop late at night to record, and edit video clips on school computers whenever I could squeeze in time.</p>
+              <p>Against all odds, that hustle actually worked—I managed to build an audience and saw real success with my channels. But no matter how hard I worked, I hit a massive wall: I lacked the high-end hardware and expensive software needed to push my content to the next level. I had the drive, but the technical barriers held me back from reaching my full potential.</p>
+              <p>That experience is the core reason I fell in love with AI. Tech shouldn't only belong to people who can afford thousands of dollars in gear or spend years mastering overwhelming software. AI is the ultimate equalizer—it opens doors for anyone who has a great idea and the drive to pursue it, regardless of their background or resources.</p>
+              <p>Today, that vision directly shapes my work. At Handshake AI, I help train and audit automatic speech recognition (ASR) models to convert video and audio into accurate text. Think about a deaf creator trying to edit a video of themselves: without being able to hear the audio cues, the process is nearly impossible. An AI tool that precisely transcribes and time-codes clips completely levels the playing field for them. Whether it's making content creation accessible to disabled creators or building tools that automate hours of tedious timeline assembly, my goal with AI is simple: break down technical walls so anyone with a spark can just create.</p>
+            </div>
+          </article>
+
+          <article className="border-l-2 border-primary/70 pl-5 sm:pl-8">
+            <h3 className="font-display text-2xl font-semibold">My “WHY” for Full-Stack Software Engineering:</h3>
+            <section className="mt-7">
+              <h4 className="font-display text-lg font-semibold text-primary">Backend (The Engine):</h4>
+              <div className="mt-4 space-y-5 text-base leading-8 text-muted-foreground">
+                <p>Whenever a major game dropped—like Pokémon Scarlet &amp; Violet or Zelda: Tears of the Kingdom—release week was my ultimate crunch time as a creator. I wasn't just playing for fun; I was live streaming the journey, taking notes on stream, and frantically editing guides to be among the first creators on YouTube to cover new features. My setup was a full mission control center: streaming and recording my gameplay on one screen, watching fellow creators like SmallAnt or AustinJohnPlays test strategies on a second, and tracking community datamines on a third to keep my audience informed.</p>
+                <p>It was a massive, collective effort where creators and builders worked together to break a game wide open. As streamers and video creators, we were testing mechanics live and building content for millions of viewers, relying directly on dataminers who dug into the raw files to pull out the hidden backbone—exact spawn rates, damage formulas, and secret item coordinates.</p>
+                <p>Seeing how those hidden files powered the entire community's content was my lightbulb moment: the frontend graphics are just the surface, but the real depth, logic, and magic live in the code behind the scenes. That realization is what drew me to backend engineering. I love building the underlying infrastructure—the database schemas, API pipelines, and server architectures—that quietly power complex systems and make data-rich experiences possible.</p>
               </div>
-              <h3 className="font-display text-lg font-semibold">{interest.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{interest.why}</p>
-            </article>
-          ))}
+            </section>
+            <section className="mt-9 border-t border-border pt-8">
+              <h4 className="font-display text-lg font-semibold text-primary">Frontend (The Experience):</h4>
+              <div className="mt-4 space-y-5 text-base leading-8 text-muted-foreground">
+                <p>There’s nothing quite like opening a piece of software for the first time, seeing a wall of a hundred confusing buttons, and feeling instantly overwhelmed (looking at you, After Effects). Early on, when I was just starting to make content and trying to edit my first video clips, software like that felt less like a creative tool and more like a puzzle I couldn't solve. I spent hours clicking through hidden menus, messing around with clunky timelines, and wondering why doing something simple had to feel so hard.</p>
+                <p>Having fought with confusing software for years as a beginner, I care deeply about building frontends that feel smooth, simple, and natural from the second you open them. A powerful backend engine doesn't mean much if the driver gets lost trying to figure out where the steering wheel is. My goal on the frontend is to take complex backend data and turn it into clean, intuitive interfaces that anyone can jump into and use without needing a manual.</p>
+              </div>
+            </section>
+          </article>
         </div>
       </div>
     </section>
@@ -303,6 +311,9 @@ function PortfolioSection() {
       <SectionHeading eyebrow="Selected work" title="Projects built with purpose" description="A mix of product, data, and engineering work focused on solving real problems with clear, maintainable technology." />
       <div className="grid gap-5 md:grid-cols-2">{projects.map((project) => (
         <article key={project.name} className="portfolio-card overflow-hidden">
+          <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
+            <img src={project.image} alt={project.imageAlt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
+          </a>
           <div className="flex flex-col p-6">
             <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span><Code2 className="size-5 text-muted-foreground" /></div>
             <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
