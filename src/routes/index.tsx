@@ -6,6 +6,7 @@ import {
   Code2,
   Download,
   Github,
+  GraduationCap,
   Layers3,
   Linkedin,
   Menu,
@@ -19,10 +20,7 @@ import chirpLogo from "@/assets/chirp-ai-logo.jpeg.asset.json";
 import handshakeLogo from "@/assets/handshake-ai-logo.jpeg.asset.json";
 import chirpMainMenu from "@/assets/chirp-main-menu.jpeg.asset.json";
 import chirpPoiMenu from "@/assets/chirp-poi-menu.jpeg.asset.json";
-import campusDataImage from "@/assets/project-campus-data.jpg";
-import researchAssistantImage from "@/assets/project-research-assistant.jpg";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type SectionId = "about" | "courses" | "experience" | "portfolio";
 type CourseCategory = "All" | "Computer Science" | "Data Science" | "Economics";
@@ -91,10 +89,15 @@ const experiences = [
 ];
 
 const projects = [
-  { name: "Campus Insights", description: "A data platform that helps university teams understand enrollment, resources, and student outcomes.", tech: ["React", "TypeScript", "PostgreSQL"], image: campusDataImage, live: true },
-  { name: "Research Copilot", description: "An AI-assisted workspace for organizing papers, extracting findings, and building structured research notes.", tech: ["Python", "FastAPI", "LLM APIs"], image: researchAssistantImage, live: true },
-  { name: "Economic Signals API", description: "A documented backend service that aggregates public indicators into analysis-ready time series.", tech: ["Node.js", "REST", "Redis"], image: undefined, live: false },
+  { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false },
+  { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false },
 ] as const;
+
+const techPattern = /\b(C\+\+|Java|Python|Jupyter|Pandas|NumPy|Matplotlib\/Seaborn|Matplotlib|Seaborn|TensorFlow|SQL|Unix|C|R)(?![a-zA-Z])/g;
+
+function TechText({ text }: { text: string }) {
+  return <>{text.split(techPattern).map((part, index) => (index % 2 === 1 ? <span key={index} className="text-highlight">{part}</span> : part))}</>;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -172,7 +175,7 @@ function SidebarContent({ activeSection, onSelect }: { activeSection: SectionId;
       </nav>
       <div className="border-t border-border p-6">
         <p className="mb-3 flex items-center gap-2 text-xs text-muted-foreground"><span className="size-2 rounded-full bg-primary shadow-[0_0_10px_var(--primary)]" />Available for opportunities</p>
-        <p className="text-xs leading-relaxed text-muted-foreground">Central New Jersey • NYC / NJ / Philadelphia · Open to internships and collaborative projects.</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">Greater New York Metropolitan Area · Open to internships and collaborative projects.</p>
       </div>
     </>
   );
@@ -199,11 +202,11 @@ function SectionHeading({ eyebrow, title, description }: { eyebrow: string; titl
 
 function AboutSection({ onViewWork }: { onViewWork: () => void }) {
   const interests = [
-    { title: "Artificial Intelligence", why: "Placeholder — a moment from [course/class or childhood moment] where I first saw how intelligent software could change how people work and what that made me want to build." },
-    { title: "Backend Development", why: "Placeholder — the experience of [a project or outage] that taught me the invisible work behind reliable systems is what keeps people's trust in a product." },
-    { title: "Frontend Development", why: "Placeholder — watching [a person or group] struggle with an interface and realizing that thoughtful design is how software earns the patience it asks of people." },
-    { title: "Data", why: "Placeholder — the day [an assignment or research moment] showed me that clean, honest data changes decisions faster than arguments do." },
-    { title: "Emerging Technology", why: "Placeholder — why I keep exploring new tools even when they aren't required, and how [a specific moment] convinced me curiosity compounds." },
+    { title: "Artificial Intelligence", why: "Tech shouldn't belong only to people who can afford thousands of dollars in gear or spend years mastering overwhelming software. AI is the ultimate equalizer — it opens doors for anyone with a great idea and the drive to pursue it, regardless of background or resources. Today that vision shapes my work at Handshake AI, where I help train and audit ASR models that precisely transcribe and time-code video and audio — think of a deaf creator editing a video without hearing the cues. My goal is simple: break down technical walls so anyone with a spark can just create." },
+    { title: "Backend Development", why: "Release week for big games was my ultimate crunch time as a creator — streaming gameplay, taking notes live, and racing to be among the first to cover new features. Watching dataminers dig into raw files to pull out exact spawn rates, damage formulas, and secret item coordinates showed me the real depth lives behind the scenes. That was my lightbulb moment: the frontend graphics are just the surface, but the real logic and magic live in the code. I love building database schemas, API pipelines, and server architectures that quietly power complex, data-rich experiences." },
+    { title: "Frontend Development", why: "There's nothing quite like opening a piece of software for the first time, seeing a wall of a hundred confusing buttons, and feeling instantly overwhelmed (looking at you, After Effects). As a beginner, clunky timelines and hidden menus made creative tools feel like puzzles I couldn't solve. Having fought with confusing software for years, I care deeply about frontends that feel smooth, simple, and natural — a powerful backend engine means little if the driver gets lost trying to find the steering wheel." },
+    { title: "Data", why: "Placeholder — your data “why” goes here: a moment when clean, honest information changed a decision for you." },
+    { title: "Emerging Technology", why: "Placeholder — why you keep exploring new tools even when they aren't required, and what convinced you curiosity compounds." },
   ];
   return (
     <section>
@@ -213,7 +216,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
           <h1 className="font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl xl:text-7xl">Saahir Tandon<span className="text-highlight">.</span></h1>
           <p className="mt-3 font-mono text-sm text-muted-foreground">Pronounced saw-hair</p>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-foreground/85">A Computer Science student at Rutgers University–New Brunswick turning curious questions into useful, well-crafted software.</p>
-          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I started at Rutgers in September 2023 and am expected to graduate in May 2027 with a major in Computer Science and a minor in Data Science (Economics Track). I’m exploring the intersection of intelligent systems, dependable backend engineering, thoughtful interfaces, and data-informed products.</p>
+          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I started at Rutgers in September 2023 and am expected to graduate in December 2027 with a major in Computer Science and a minor in Data Science (Economics Track). I’m exploring the intersection of intelligent systems, dependable backend engineering, thoughtful interfaces, and data-informed products.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button onClick={onViewWork}>View my work <ArrowUpRight /></Button>
             <Button variant="outline" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <Linkedin /></a></Button>
@@ -230,7 +233,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase text-primary">My why</p>
             <h2 className="font-display text-2xl font-semibold sm:text-3xl">Why I’m drawn to this work</h2>
-            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">Placeholder — your personal story goes here. A short paragraph that sets up the five “why” cards below: the moment, person, or experience that got you interested in building software, and what keeps you here.</p>
+            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">Growing up, my dream was to make gaming content on YouTube. Nobody around me saw content creation as a real path — so I saved loose change in NYC for basic equipment, snuck onto my dad’s laptop late at night to record, and edited video clips on school computers whenever I could squeeze in time. The hustle actually worked, but high-end hardware and expensive software kept capping what I could build. That experience is why I make software: tools should open doors, not stand in the way.</p>
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold">Connect</h2>
@@ -245,7 +248,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
           {interests.map((interest, index) => (
             <article key={interest.title} className="portfolio-card p-6">
               <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-xs font-semibold text-primary">{String(index + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-xs font-semibold text-highlight">{String(index + 1).padStart(2, "0")}</span>
                 <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
               </div>
               <h3 className="font-display text-lg font-semibold">{interest.title}</h3>
@@ -269,7 +272,7 @@ function CoursesSection() {
       <div className="grid gap-4 md:grid-cols-2">{visibleCourses.map((course) => (
         <article key={`${course.code}-${course.name}`} className="portfolio-card p-6">
           <div className="mb-5 font-mono text-sm font-semibold text-primary">{course.code}</div>
-          <h2 className="font-display text-xl font-semibold">{course.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
+          <h2 className="font-display text-xl font-semibold">{course.name}</h2><p className="mt-3 text-sm leading-6 text-muted-foreground"><TechText text={course.description} /></p>
         </article>
       ))}</div>
     </section>
@@ -298,14 +301,13 @@ function PortfolioSection() {
   return (
     <section>
       <SectionHeading eyebrow="Selected work" title="Projects built with purpose" description="A mix of product, data, and engineering work focused on solving real problems with clear, maintainable technology." />
-      <div className="grid gap-5 md:grid-cols-2">{projects.map((project, index) => (
-        <article key={project.name} className={cn("portfolio-card overflow-hidden", index === 0 && "md:col-span-2 md:grid md:grid-cols-[1.25fr_1fr]")}>
-          {project.image && <img src={project.image} alt={`${project.name} interface preview`} width={1280} height={800} loading="lazy" className={cn("aspect-video w-full border-b border-border object-cover", index === 0 && "md:h-full md:border-b-0 md:border-r")} />}
+      <div className="grid gap-5 md:grid-cols-2">{projects.map((project) => (
+        <article key={project.name} className="portfolio-card overflow-hidden">
           <div className="flex flex-col p-6">
-            <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-primary">0{index + 1}</span><Code2 className="size-5 text-muted-foreground" /></div>
-            <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
+            <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span><Code2 className="size-5 text-muted-foreground" /></div>
+            <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
-            <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href="https://github.com/SaahirT" target="_blank" rel="noopener noreferrer"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button>}</div>
+            <div className="mt-6 flex gap-2"><Button variant="outline" size="sm" asChild><a href={project.repo} target="_blank" rel="noopener noreferrer"><Github />GitHub</a></Button>{project.live && <Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button>}</div>
           </div>
         </article>
       ))}</div>

@@ -9,3 +9,7 @@
 - [x] Add pronunciation, real social links, and remove email links
 - [x] Replace sample experience with Handshake AI and Chirp AI roles and images
 - [x] Verify filters, social links, and experience imagery in the live preview
+- [ ] Update About: December 2027 graduation, Greater New York location, and the real interest story
+- [ ] Add subtle pink accents (course coding languages, card index numbers)
+- [ ] Replace placeholder portfolio projects with the two real GitHub projects
+- [ ] Verify About, pink accents, and portfolio in the live preview
