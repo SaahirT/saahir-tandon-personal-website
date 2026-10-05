@@ -13,3 +13,6 @@
 - [x] Add subtle pink accents (course coding languages, card index numbers)
 - [x] Replace placeholder portfolio projects with the two real GitHub projects
 - [x] Verify About, pink accents, and portfolio in the live preview
+- [x] Preserve the complete original why-story in a three-topic editorial About layout
+- [x] Remove the resume link and update opportunity availability copy
+- [x] Add the supplied visual aid to each portfolio project
