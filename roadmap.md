@@ -16,3 +16,6 @@
 - [x] Preserve the complete original why-story in a three-topic editorial About layout
 - [x] Remove the resume link and update opportunity availability copy
 - [x] Add the supplied visual aid to each portfolio project
+- [x] Refresh About with new headshot, quoted pronunciation, and updated headline/summary
+- [x] Link each course card to its Rutgers course page and add missing languages in pink
+- [x] Make the portfolio GitHub action prominent ("View on GitHub")
