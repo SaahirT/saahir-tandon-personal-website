@@ -14,17 +14,17 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ComponentType } from "react";
 
-import headshotAsset from "@/assets/saahir-tandon-headshot-2026.jpg.asset.json";
-import chirpLogo from "@/assets/chirp-ai-logo.jpeg.asset.json";
-import handshakeLogo from "@/assets/handshake-ai-logo.jpeg.asset.json";
-import chirpMainMenu from "@/assets/chirp-main-menu.jpeg.asset.json";
-import chirpPoiMenu from "@/assets/chirp-poi-menu.jpeg.asset.json";
-import studentPerformanceImage from "@/assets/student-performance-analysis.jpeg.asset.json";
-import playerPerformanceImage from "@/assets/player-performance-intro.jpeg.asset.json";
-import aboutSectionShot from "@/assets/about_section.png.asset.json";
-import courseworkSectionShot from "@/assets/coursework_section.png.asset.json";
-import experienceSectionShot from "@/assets/experience_section.png.asset.json";
-import projectsSectionShot from "@/assets/projects_section.png.asset.json";
+const headshotAsset = { url: "/images/saahir-tandon-headshot-2026.jpg" };
+const chirpLogo = { url: "/images/chirp-ai-logo.jpeg" };
+const handshakeLogo = { url: "/images/handshake-ai-logo.jpeg" };
+const chirpMainMenu = { url: "/images/chirp-main-menu.jpeg" };
+const chirpPoiMenu = { url: "/images/chirp-poi-menu.jpeg" };
+const studentPerformanceImage = { url: "/images/student-performance-analysis.jpeg" };
+const playerPerformanceImage = { url: "/images/player-performance-intro.jpeg" };
+const aboutSectionShot = { url: "/images/about_section.png" };
+const courseworkSectionShot = { url: "/images/coursework_section.png" };
+const experienceSectionShot = { url: "/images/experience_section.png" };
+const projectsSectionShot = { url: "/images/projects_section.png" };
 import { Button } from "@/components/ui/button";
 
 type SectionId = "about" | "courses" | "experience" | "portfolio";
