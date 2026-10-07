@@ -17,6 +17,7 @@ import { useEffect, useState, type ComponentType } from "react";
 const headshotAsset = { url: "/images/saahir-tandon-headshot-2026.jpg" };
 const chirpLogo = { url: "/images/chirp-ai-logo.jpeg" };
 const handshakeLogo = { url: "/images/handshake-ai-logo.jpeg" };
+const blueprintLogo = { url: "/images/rutgers-blueprint-logo.png" };
 const chirpMainMenu = { url: "/images/chirp-main-menu.jpeg" };
 const chirpPoiMenu = { url: "/images/chirp-poi-menu.jpeg" };
 const studentPerformanceImage = { url: "/images/student-performance-analysis.jpeg" };
