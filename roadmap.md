@@ -19,3 +19,6 @@
 - [x] Refresh About with new headshot, quoted pronunciation, and updated headline/summary
 - [x] Link each course card to its Rutgers course page and add missing languages in pink
 - [x] Make the portfolio GitHub action prominent ("View on GitHub")
+- [x] Finish accessible GitHub placement near the project card header
+- [x] Rename Courses to Coursework and Portfolio to Projects
+- [x] Reset scrolling to the top when switching sections
