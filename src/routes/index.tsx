@@ -12,7 +12,7 @@ import {
   UserRound,
   X,
 } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 
 import headshotAsset from "@/assets/saahir-tandon-headshot-2026.jpg.asset.json";
 import chirpLogo from "@/assets/chirp-ai-logo.jpeg.asset.json";
@@ -28,9 +28,9 @@ type CourseCategory = "All" | "Computer Science" | "Data Science" | "Economics";
 
 const navigation: { id: SectionId; label: string; icon: ComponentType<{ className?: string }> }[] = [
   { id: "about", label: "About", icon: UserRound },
-  { id: "courses", label: "Courses", icon: BookOpen },
+  { id: "courses", label: "Coursework", icon: BookOpen },
   { id: "experience", label: "Experience", icon: BriefcaseBusiness },
-  { id: "portfolio", label: "Portfolio", icon: Layers3 },
+  { id: "portfolio", label: "Projects", icon: Layers3 },
 ];
 
 const courses = [
@@ -117,6 +117,10 @@ export const Route = createFileRoute("/")({
 function PortfolioSite() {
   const [activeSection, setActiveSection] = useState<SectionId>("about");
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [activeSection]);
 
   const selectSection = (section: SectionId) => {
     setActiveSection(section);
@@ -275,7 +279,7 @@ function CoursesSection() {
   const visibleCourses = (filter === "All" ? [...courses] : courses.filter((course) => (course.categories as readonly string[]).includes(filter))).sort((a, b) => a.name.localeCompare(b.name));
   return (
     <section>
-      <SectionHeading eyebrow="Coursework" title="Courses & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
+      <SectionHeading eyebrow="Coursework" title="Coursework & academic focus" description="Selected coursework that has shaped how I think about software, data, and the systems around them." />
       <div className="mb-7 flex flex-wrap gap-2" aria-label="Filter courses">{categories.map((category) => <Button key={category} variant="filter" data-active={filter === category} onClick={() => setFilter(category)}>{category}</Button>)}</div>
       <div className="grid gap-4 md:grid-cols-2">{visibleCourses.map((course) => (
         <a key={`${course.code}-${course.name}`} href={course.url} target="_blank" rel="noopener noreferrer" className="portfolio-card block p-6">
@@ -311,11 +315,19 @@ function PortfolioSection() {
       <SectionHeading eyebrow="Selected work" title="Projects built with purpose" description="A mix of product, data, and engineering work focused on solving real problems with clear, maintainable technology." />
       <div className="grid gap-5 md:grid-cols-2">{projects.map((project) => (
         <article key={project.name} className="portfolio-card overflow-hidden">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border px-6 py-4">
+            <span className="min-w-0 font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span>
+            <div className="flex shrink-0 items-center gap-3">
+              <Code2 className="size-5 shrink-0 text-muted-foreground" />
+              <Button variant="outline" asChild className="shrink-0 text-primary hover:border-highlight hover:text-highlight">
+                <a href={project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`}><Github />GitHub<ArrowUpRight /></a>
+              </Button>
+            </div>
+          </div>
           <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
             <img src={project.image} alt={project.imageAlt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
           </a>
           <div className="flex flex-col p-6">
-            <div className="mb-5 flex items-center justify-between"><span className="font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span><span className="flex items-center gap-3"><a href={project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`} className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-1.5 font-display text-xs font-semibold text-primary transition-colors hover:border-highlight hover:text-highlight"><Github className="size-4" />GitHub</a><Code2 className="size-5 text-muted-foreground" /></span></div>
             <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
             {project.live && <div className="mt-6"><Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button></div>}
