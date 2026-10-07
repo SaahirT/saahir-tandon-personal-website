@@ -70,6 +70,13 @@ const experiences = [
     dates: "Oct 2026 — Present",
     location: "New Brunswick, NJ · On-site",
     logo: blueprintLogo.url,
+    points: ["Selected for Rutgers Blueprint’s competitive Backend Software Engineering Fellowship.", "Participating in technical workshops focused on Git, version control, backend development, and collaborative software engineering workflows.", "Building backend engineering skills through cohort-based learning and upcoming hands-on project work.",],
+  },
+  {
+    role: "AI Evaluation Specialist",
+    company: "Handshake AI Fellowship",
+    dates: "Sep 2026 - Oct 2026",
+    location: "San Francisco, CA · Remote",
     logo: handshakeLogo.url,
     points: ["Contributed to an enterprise AI model alignment initiative aimed at evaluating and benchmarking next-generation Large Language Models (LLMs).", "Designed, executed, and audited complex evaluation tasks across varied formats to benchmark model reasoning accuracy, structural consistency, and format compliance.", "Delivered structured error analysis and fine-tuning feedback to construct precise ground-truth evaluation datasets for downstream Supervised Fine-Tuning (SFT) pipelines."],
   },
