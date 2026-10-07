@@ -21,6 +21,10 @@ import chirpMainMenu from "@/assets/chirp-main-menu.jpeg.asset.json";
 import chirpPoiMenu from "@/assets/chirp-poi-menu.jpeg.asset.json";
 import studentPerformanceImage from "@/assets/student-performance-analysis.jpeg.asset.json";
 import playerPerformanceImage from "@/assets/player-performance-intro.jpeg.asset.json";
+import aboutSectionShot from "@/assets/about_section.png.asset.json";
+import courseworkSectionShot from "@/assets/coursework_section.png.asset.json";
+import experienceSectionShot from "@/assets/experience_section.png.asset.json";
+import projectsSectionShot from "@/assets/projects_section.png.asset.json";
 import { Button } from "@/components/ui/button";
 
 type SectionId = "about" | "courses" | "experience" | "portfolio";
@@ -90,8 +94,14 @@ const experiences = [
 ];
 
 const projects = [
-  { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false, image: studentPerformanceImage.url, imageAlt: "Histogram and box plot showing the distribution of student final grades" },
-  { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false, image: playerPerformanceImage.url, imageAlt: "Presentation title slide asking whether mental state impacts Fortnite performance" },
+  { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false, images: [{ src: studentPerformanceImage.url, alt: "Histogram and box plot showing the distribution of student final grades" }] },
+  { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false, images: [{ src: playerPerformanceImage.url, alt: "Presentation title slide asking whether mental state impacts Fortnite performance" }] },
+  { name: "Personal Portfolio Website", date: "", description: "Personal website showcasing my experience, coursework, projects, and personality, with a design inspired by Ghoul Trooper from Fortnite.", tech: ["React", "TypeScript", "Tailwind CSS", "Vite"], repo: "https://github.com/SaahirT/saahir-tandon-personal-website", live: false, images: [
+    { src: aboutSectionShot.url, alt: "About section of the portfolio website with Saahir's profile and why story" },
+    { src: courseworkSectionShot.url, alt: "Coursework section of the portfolio website with filterable course cards" },
+    { src: experienceSectionShot.url, alt: "Experience section of the portfolio website with roles and timelines" },
+    { src: projectsSectionShot.url, alt: "Projects section of the portfolio website with project cards" },
+  ] },
 ] as const;
 
 const techPattern = /\b(C\+\+|Java|Python|Jupyter|Pandas|NumPy|Matplotlib\/Seaborn|Matplotlib|Seaborn|TensorFlow|SQLite|SQL|Unix|assembly|C|R)(?![a-zA-Z])/g;
@@ -324,11 +334,21 @@ function PortfolioSection() {
               </Button>
             </div>
           </div>
-          <a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
-            <img src={project.image} alt={project.imageAlt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
-          </a>
+          {project.images.length === 1 ? (
+            <a href={project.images[0].src} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
+              <img src={project.images[0].src} alt={project.images[0].alt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
+            </a>
+          ) : (
+            <div className="grid grid-cols-2 gap-px border-b border-border bg-border">
+              {project.images.map((shot) => (
+                <a key={shot.src} href={shot.src} target="_blank" rel="noopener noreferrer" aria-label={`Open screenshot of ${project.name}`} className="block overflow-hidden bg-secondary">
+                  <img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 hover:scale-[1.015]" />
+                </a>
+              ))}
+            </div>
+          )}
           <div className="flex flex-col p-6">
-            <h2 className="font-display text-xl font-semibold">{project.name}</h2><p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p><p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
+            <h2 className="font-display text-xl font-semibold">{project.name}</h2>{project.date && <p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p>}<p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
             {project.live && <div className="mt-6"><Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button></div>}
           </div>
