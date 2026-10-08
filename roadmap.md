@@ -22,3 +22,8 @@
 - [x] Finish accessible GitHub placement near the project card header
 - [x] Rename Courses to Coursework and Portfolio to Projects
 - [x] Reset scrolling to the top when switching sections
+- [x] Localize all site images into public/images for hosting outside Lovable
+- [x] Add Rutgers Blueprint experience entry and correct Handshake AI dates
+- [x] Add Personal Portfolio Website as a project with its four section screenshots
+- [x] Update Rutgers Blueprint bullet to "1 of 30 selected students..."
+- [x] Order Projects by recently added and add Sep 2026 — Oct 2026 dates
