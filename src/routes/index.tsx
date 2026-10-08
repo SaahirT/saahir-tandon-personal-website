@@ -103,7 +103,7 @@ const experiences = [
 ];
 
 const projects = [
-{ name: "Personal Portfolio Website", date: "Sep 2026 — Oct 2026", description: "Personal website showcasing my experience, coursework, projects, and personality, with a design inspired by Ghoul Trooper from Fortnite.", tech: ["React", "TypeScript", "Tailwind CSS", "Vite"], repo: "https://github.com/SaahirT/saahir-tandon-personal-website", live: false, images: [
+  { name: "Personal Portfolio Website", date: "Sep 2026 — Oct 2026", description: "Personal website showcasing my experience, coursework, projects, and personality, with a design inspired by Ghoul Trooper from Fortnite.", tech: ["React", "TypeScript", "Tailwind CSS", "Vite"], repo: "https://github.com/SaahirT/saahir-tandon-personal-website", live: false, images: [
     { src: aboutSectionShot.url, alt: "About section of the portfolio website with Saahir's profile and why story" },
     { src: courseworkSectionShot.url, alt: "Coursework section of the portfolio website with filterable course cards" },
     { src: experienceSectionShot.url, alt: "Experience section of the portfolio website with roles and timelines" },
