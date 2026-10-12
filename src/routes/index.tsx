@@ -22,6 +22,7 @@ const chirpMainMenu = { url: "/images/chirp-main-menu.jpeg" };
 const chirpPoiMenu = { url: "/images/chirp-poi-menu.jpeg" };
 const studentPerformanceImage = { url: "/images/student-performance-analysis.jpeg" };
 const playerPerformanceImage = { url: "/images/player-performance-intro.jpeg" };
+const njtaEvChargingImage = { url: "/images/njta-ev-charging-analysis.png" };
 const aboutSectionShot = { url: "/images/about_section.png" };
 const courseworkSectionShot = { url: "/images/coursework_section.png" };
 const experienceSectionShot = { url: "/images/experience_section.png" };
@@ -103,6 +104,7 @@ const experiences = [
 ];
 
 const projects = [
+  { name: "NJTA EV Charging Infrastructure Optimization POC", date: "Sep 2026 — Oct 2026", description: "Built an independent data analytics proof-of-concept to identify priority locations for future EV fast-charging infrastructure across New Jersey Turnpike service plazas. Combined NJ MVC EV registration data with NJDOT traffic data and developed a custom Corridor Demand Index to rank high-demand corridors and recommend charger allocations.", tech: ["Python", "Pandas", "NumPy", "Jupyter", "Matplotlib", "Data Analytics"], repo: "https://github.com/SaahirT/njta-ev-charging-poc", live: false, images: [{ src: njtaEvChargingImage.url, alt: "Horizontal bar chart of modeled fast-charger targets for top New Jersey highway service areas" }] },
   { name: "Personal Portfolio Website", date: "Sep 2026 — Oct 2026", description: "Personal website showcasing my experience, coursework, projects, and personality, with a design inspired by Ghoul Trooper from Fortnite.", tech: ["React", "TypeScript", "Tailwind CSS", "Vite"], repo: "https://github.com/SaahirT/saahir-tandon-personal-website", live: false, images: [
     { src: aboutSectionShot.url, alt: "About section of the portfolio website with Saahir's profile and why story" },
     { src: courseworkSectionShot.url, alt: "Coursework section of the portfolio website with filterable course cards" },
