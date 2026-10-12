@@ -27,3 +27,4 @@
 - [x] Add Personal Portfolio Website as a project with its four section screenshots
 - [x] Update Rutgers Blueprint bullet to "1 of 30 selected students..."
 - [x] Order Projects by recently added and add Sep 2026 — Oct 2026 dates
+- [x] Add NJTA EV Charging Infrastructure Optimization POC project with its chart image
