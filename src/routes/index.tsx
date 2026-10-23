@@ -103,7 +103,20 @@ const experiences = [
   },
 ];
 
-const projects = [
+type ProjectImage = { src: string; alt: string };
+
+type Project = {
+  name: string;
+  date: string;
+  description: string;
+  tech: string[];
+  repo: string;
+  live: string | false;
+  images: ProjectImage[];
+};
+
+const projects: Project[] = [
+  { name: "ATLAS — Advanced Therapies Logistics & Scheduling", date: "Oct 2026", description: "Built a proof-of-concept logistics and risk-monitoring dashboard while preparing for a Johnson & Johnson Advanced Therapies Supply Chain (ATSC) data science co-op interview. Combined public CMS hospital data, historical New Jersey traffic data, and 50 synthetic medical shipments to identify deliveries that may require attention based on timing and transportation risk.", tech: ["Python", "Pandas", "Tableau", "Jupyter", "Data Analytics", "Supply Chain Analytics"], repo: "https://github.com/SaahirT/atlas-supply-chain-poc", live: "https://public.tableau.com/app/profile/s.t7042/viz/ATLASAdvancedTherapiesLogisticsScheduling/Dashboard1", images: [] },
   { name: "NJTA EV Charging Infrastructure Optimization POC", date: "Sep 2026 — Oct 2026", description: "Built an independent data analytics proof-of-concept to identify priority locations for future EV fast-charging infrastructure across New Jersey Turnpike service plazas. Combined NJ MVC EV registration data with NJDOT traffic data and developed a custom Corridor Demand Index to rank high-demand corridors and recommend charger allocations.", tech: ["Python", "Pandas", "NumPy", "Jupyter", "Matplotlib", "Data Analytics"], repo: "https://github.com/SaahirT/njta-ev-charging-poc", live: false, images: [{ src: njtaEvChargingImage.url, alt: "Horizontal bar chart of modeled fast-charger targets for top New Jersey highway service areas" }] },
   { name: "Personal Portfolio Website", date: "Sep 2026 — Oct 2026", description: "Personal website showcasing my experience, coursework, projects, and personality, with a design inspired by Ghoul Trooper from Fortnite.", tech: ["React", "TypeScript", "Tailwind CSS", "Vite"], repo: "https://github.com/SaahirT/saahir-tandon-personal-website", live: false, images: [
     { src: aboutSectionShot.url, alt: "About section of the portfolio website with Saahir's profile and why story" },
@@ -113,7 +126,7 @@ const projects = [
   ] },
   { name: "Predictive Analytics for Student Performance", date: "Sep 2025 — Dec 2025", description: "Built a data-driven predictive analytics project to analyze student academic performance and forecast final grades. Collected, cleaned, and processed academic datasets using Python, Pandas, NumPy, and SQL, and trained multiple regression models to identify patterns associated with student outcomes. The analysis aimed to help educational institutions proactively identify students who may need academic support.", tech: ["Python", "Pandas", "NumPy", "SQL", "Regression"], repo: "https://github.com/SaahirT/student-performance-analytics", live: false, images: [{ src: studentPerformanceImage.url, alt: "Histogram and box plot showing the distribution of student final grades" }] },
   { name: "Predictive Modeling for Player Performance", date: "Sep 2023 — Dec 2023", description: "Developed and evaluated machine learning models to analyze gameplay data and predict player mental state and performance outcomes. Built and compared Naive Bayes and decision tree models using R, applying train/test splits and cross-validation to assess predictive effectiveness. Evaluated model performance using confusion matrices and accuracy metrics, concluding that mental state was a weak predictor of in-game performance.", tech: ["R", "Naive Bayes", "Decision Trees", "Cross-Validation"], repo: "https://github.com/SaahirT/player-performance-analytics", live: false, images: [{ src: playerPerformanceImage.url, alt: "Presentation title slide asking whether mental state impacts Fortnite performance" }] },
-  ] as const;
+];
 
 const techPattern = /\b(C\+\+|Java|Python|Jupyter|Pandas|NumPy|Matplotlib\/Seaborn|Matplotlib|Seaborn|TensorFlow|SQLite|SQL|Unix|assembly|C|R)(?![a-zA-Z])/g;
 
@@ -334,7 +347,9 @@ function PortfolioSection() {
   return (
     <section>
       <SectionHeading eyebrow="Selected work" title="Projects built with purpose" description="A mix of product, data, and engineering work focused on solving real problems with clear, maintainable technology." />
-      <div className="grid gap-5 md:grid-cols-2">{projects.map((project) => (
+      <div className="grid gap-5 md:grid-cols-2">{projects.map((project) => {
+        const firstImage = project.images[0];
+        return (
         <article key={project.name} className="portfolio-card overflow-hidden">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border px-6 py-4">
             <span className="min-w-0 font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span>
@@ -345,11 +360,11 @@ function PortfolioSection() {
               </Button>
             </div>
           </div>
-          {project.images.length === 1 ? (
-            <a href={project.images[0].src} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
-              <img src={project.images[0].src} alt={project.images[0].alt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
+          {project.images.length === 1 && firstImage ? (
+            <a href={firstImage.src} target="_blank" rel="noopener noreferrer" aria-label={`Open visual for ${project.name}`} className="block overflow-hidden border-b border-border bg-secondary">
+              <img src={firstImage.src} alt={firstImage.alt} loading="lazy" className="aspect-[16/10] w-full object-contain transition-transform duration-300 hover:scale-[1.015]" />
             </a>
-          ) : (
+          ) : project.images.length > 1 ? (
             <div className="grid grid-cols-2 gap-px border-b border-border bg-border">
               {project.images.map((shot) => (
                 <a key={shot.src} href={shot.src} target="_blank" rel="noopener noreferrer" aria-label={`Open screenshot of ${project.name}`} className="block overflow-hidden bg-secondary">
@@ -357,14 +372,15 @@ function PortfolioSection() {
                 </a>
               ))}
             </div>
-          )}
+          ) : null}
           <div className="flex flex-col p-6">
             <h2 className="font-display text-xl font-semibold">{project.name}</h2>{project.date && <p className="mt-1 font-mono text-xs text-muted-foreground">{project.date}</p>}<p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">{project.tech.map((item) => <span key={item} className="font-mono text-xs text-primary/80">{item}</span>)}</div>
-            {project.live && <div className="mt-6"><Button variant="secondary" size="sm" asChild><a href="#demo" aria-label={`${project.name} live demo (placeholder)`}>Live demo <ArrowUpRight /></a></Button></div>}
+            {project.live && <div className="mt-6"><Button variant="secondary" size="sm" asChild><a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} live dashboard`}>Live demo <ArrowUpRight /></a></Button></div>}
           </div>
         </article>
-      ))}</div>
+      );
+      })}</div>
     </section>
   );
 }
