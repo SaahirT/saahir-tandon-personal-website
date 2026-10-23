@@ -29,3 +29,4 @@
 - [x] Order Projects by recently added and add Sep 2026 — Oct 2026 dates
 - [x] Add NJTA EV Charging Infrastructure Optimization POC project with its chart image
 - [x] Add ATLAS project card with GitHub and live Tableau dashboard links
+- [x] Add the supplied ATLAS dashboard screenshot using local image storage
