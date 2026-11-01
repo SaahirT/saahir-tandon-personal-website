@@ -5,6 +5,7 @@ import {
   BriefcaseBusiness,
   Code2,
   Github,
+  Globe,
   GraduationCap,
   Layers3,
   Linkedin,
@@ -355,6 +356,11 @@ function PortfolioSection() {
             <span className="min-w-0 font-mono text-xs text-highlight">0{projects.indexOf(project) + 1}</span>
             <div className="flex shrink-0 items-center gap-3">
               <Code2 className="size-5 shrink-0 text-muted-foreground" />
+              {project.live && (
+                <Button variant="outline" asChild className="shrink-0 text-primary hover:border-highlight hover:text-highlight">
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} live dashboard`}><Globe />Live demo<ArrowUpRight /></a>
+                </Button>
+              )}
               <Button variant="outline" asChild className="shrink-0 text-primary hover:border-highlight hover:text-highlight">
                 <a href={project.repo} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`}><Github />GitHub<ArrowUpRight /></a>
               </Button>
