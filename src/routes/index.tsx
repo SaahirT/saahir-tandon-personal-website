@@ -258,7 +258,7 @@ function AboutSection({ onViewWork }: { onViewWork: () => void }) {
           <h1 className="font-display text-5xl font-semibold leading-[1.05] text-foreground sm:text-6xl xl:text-7xl">Saahir Tandon<span className="text-highlight">.</span></h1>
           <p className="mt-3 font-mono text-sm text-muted-foreground">Pronounced “saw-hair”</p>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-foreground/85">Computer Science student focused on AI, software engineering, and data-driven products.</p>
-          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I’m a student at Rutgers University–New Brunswick (Sep 2023 – May 2028), pursuing a Bachelor of Science (BS) in Computer Science with a double-minor in Data Science and Economics while maintaining a 3.6 GPA. My main focus is on Applied AI, Backend Engineering, and Full-Stack Development—building clean APIs, database systems, and practical software applications.</p>
+          <p className="mt-5 max-w-2xl leading-7 text-muted-foreground">I’m a student at Rutgers University–New Brunswick (Sep 2023 — May 2028), pursuing a Bachelor of Science (BS) in Computer Science with a double-minor in Data Science and Economics while maintaining a 3.6 GPA. My main focus is on Applied AI, Backend Engineering, and Full-Stack Development—building clean APIs, database systems, and practical software applications.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button onClick={onViewWork}>View my work <ArrowUpRight /></Button>
             <Button variant="outline" asChild><a href="https://www.linkedin.com/in/saahirtandon" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <Linkedin /></a></Button>
