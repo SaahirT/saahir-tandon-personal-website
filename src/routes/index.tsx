@@ -19,6 +19,7 @@ const headshotAsset = { url: "/images/saahir-tandon-headshot-2026.jpg" };
 const chirpLogo = { url: "/images/chirp-ai-logo.jpeg" };
 const handshakeLogo = { url: "/images/handshake-ai-logo.jpeg" };
 const blueprintLogo = { url: "/images/rutgers-blueprint-logo.png" };
+const johnsonJohnsonLogo = { url: "/images/johnson-johnson-logo.jpeg" };
 const chirpMainMenu = { url: "/images/chirp-main-menu.jpeg" };
 const chirpPoiMenu = { url: "/images/chirp-poi-menu.jpeg" };
 const studentPerformanceImage = { url: "/images/student-performance-analysis.jpeg" };
@@ -70,9 +71,17 @@ const experiences = [
     role: "Backend Software Engineering Fellow",
     company: "Rutgers Blueprint",
     dates: "Oct 2026 — Present",
-    location: "New Brunswick, NJ · On-site",
+    location: "New Brunswick, NJ · On‑site",
     logo: blueprintLogo.url,
     points: ["1 of 30 selected students for Rutgers Blueprint’s competitive Backend Software Engineering Fellowship.", "Participating in technical workshops focused on Git, version control, backend development, and collaborative software engineering workflows.", "Building backend engineering skills through cohort-based learning and upcoming hands-on project work.",],
+  },
+  {
+    role: "Technical Lead, Data Science Extern (Rutgers MBS Externship Exchange)",
+    company: "Johnson & Johnson",
+    dates: "Sep 2026 — Present",
+    location: "New Brunswick, NJ · On‑site",
+    logo: johnsonJohnsonLogo.url,
+    points: ["Led technical coordination for a 9-person team, standardizing Python workflows, data definitions, filters, and analytical methods across parallel healthcare data workstreams.", "Analyzed 100,000+ public healthcare payment records using Python and SQL to identify patterns across providers, hospitals, manufacturers, payment types, specialties, and geographic regions.", "Built an interactive Streamlit and Plotly dashboard integrating 6 analytical metrics covering payment activity, competitive engagement, market trends, relationship patterns, and concentration."],
   },
   {
     role: "AI Evaluation Specialist",
@@ -334,7 +343,7 @@ function ExperienceSection() {
         <article key={experience.role} className="relative grid grid-cols-[56px_minmax(0,1fr)] gap-5 border-b border-border py-8 first:pt-2">
           <img src={experience.logo} alt={`${experience.company} logo`} width={56} height={56} className="z-10 size-14 rounded-md border border-border object-cover" />
           <div>
-            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between"><div><h2 className="font-display text-xl font-semibold">{experience.role}</h2><p className="mt-1 text-sm font-medium text-primary">{experience.company}</p></div><div className="text-sm text-muted-foreground md:text-right"><p>{experience.dates}</p><p className="mt-1">{experience.location}</p></div></div>
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between"><div><h2 className="font-display text-xl font-semibold">{experience.role}</h2><p className="mt-1 text-sm font-medium text-primary">{experience.company}</p></div><div className="text-sm text-muted-foreground md:whitespace-nowrap md:text-right"><p>{experience.dates}</p><p className="mt-1">{experience.location}</p></div></div>
             <ul className="mt-5 space-y-2">{experience.points.map((point) => <li key={point} className="flex gap-3 text-sm leading-6 text-muted-foreground"><span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />{point}</li>)}</ul>
             {experience.screenshots && <div className="mt-6 grid grid-cols-2 gap-4 sm:max-w-sm" aria-label="Chirp AI app screenshots">{experience.screenshots.map((shot) => <a key={shot.label} href={shot.src} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Open ${shot.label} screenshot`}><img src={shot.src} alt={shot.alt} loading="lazy" className="aspect-[591/1280] w-full rounded-md border border-border bg-secondary object-contain transition-colors group-hover:border-primary/60" /><span className="mt-2 block text-xs text-muted-foreground group-hover:text-primary">{shot.label} <ArrowUpRight className="inline size-3" /></span></a>)}</div>}
           </div>

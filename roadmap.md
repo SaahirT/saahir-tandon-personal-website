@@ -30,3 +30,5 @@
 - [x] Add NJTA EV Charging Infrastructure Optimization POC project with its chart image
 - [x] Add ATLAS project card with GitHub and live Tableau dashboard links
 - [x] Add the supplied ATLAS dashboard screenshot using local image storage
+- [x] Add Johnson & Johnson Data Science Extern experience entry with its local logo
+- [x] Keep experience dates and location on single lines at every width
