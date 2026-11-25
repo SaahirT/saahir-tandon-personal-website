@@ -74,7 +74,7 @@ const experiences = [
     dates: "Nov 2026 — Present",
     location: "Remote",
     logo: pfizerLogo.url,
-    points: ["Developing an AI-powered document intelligence pipeline to automate review of 100+ page pharmaceutical vendor files, extracting critical dates, classifying document types, and flagging outdated compliance documentation.", "Building OCR and RAG-based workflows using Python, Tesseract, PaddleOCR, LlamaIndex, and open-source LLMs to transform scanned pharmaceutical documents into structures, searchable data for compliance teams.", "Evaluating document extraction, retrieval, and classification performance to optimize model accuracy and reduce manual QA workflows, helping identify documentation issues before they contribute to regulatory and drug-approval delays."],
+    points: ["Developing an AI-powered document intelligence pipeline to automate review of 100+ page pharmaceutical vendor files, extracting critical dates, classifying document types, and flagging outdated compliance documentation.", "Building OCR and RAG-based workflows using Python, Tesseract, PaddleOCR, LlamaIndex, and open-source LLMs to transform scanned pharmaceutical documents into structured, searchable data for compliance teams.", "Evaluating document extraction, retrieval, and classification performance to optimize model accuracy and reduce manual QA workflows, helping identify documentation issues before they contribute to regulatory and drug-approval delays."],
   },
   {
     role: "Backend Software Engineering Fellow",
@@ -82,7 +82,7 @@ const experiences = [
     dates: "Oct 2026 — Present",
     location: "New Brunswick, NJ · On‑site",
     logo: blueprintLogo.url,
-    points: ["1 of 30 selected students for Rutgers Blueprint’s competitive Backend Software Engineering Fellowship.", "Participating in technical workshops focused on Git, version control, backend development, and collaborative software engineering workflows.", "Building backend engineering skills through cohort-based learning and upcoming hands-on project work.",],
+    points: ["Selected as 1 of 30 Backend Software Engineering Fellows from hundreds of applicants across Rutgers Blueprint’s fellowship programs, joining a selective cohort focused on backend development and collaborative software engineering.", "Built backend fundamentals through hands-on workshops covering Git/GitHub, Python, SQL, client-server architecture, and HTTP, applying version control and collaborative development practices throughout the fellowship.", "Collaborating in a 5-person engineering team to develop an outfit recommendation application with a Python backend, SQL database, CRUD operations, APIs, and weather-aware recommendation logic, culminating in a live technical presentation and demo."],
   },
   {
     role: "Technical Lead, Data Science Extern (Rutgers MBS Externship Exchange)",
@@ -90,7 +90,7 @@ const experiences = [
     dates: "Sep 2026 — Present",
     location: "New Brunswick, NJ · On‑site",
     logo: johnsonJohnsonLogo.url,
-    points: ["Led technical coordination for a 9-person team, standardizing Python workflows, data definitions, filters, and analytical methods across parallel healthcare data workstreams.", "Analyzed 100,000+ public healthcare payment records using Python and SQL to identify patterns across providers, hospitals, manufacturers, payment types, specialties, and geographic regions.", "Built an interactive Streamlit and Plotly dashboard integrating 6 analytical metrics covering payment activity, competitive engagement, market trends, relationship patterns, and concentration."],
+    points: ["Led technical standardization across a 9-person data science team, establishing shared definitions, filters, data structures, and metric logic to align parallel healthcare analytics work-streams.", "Built a Python data pipeline combining 3 years of CMS Open Payments data across General, Research, and Ownership datasets, transforming 100,000+ records into analysis-ready and quintile-based datasets.", "Developed 3 of 6 analytical metrics and built a 7-page Streamlit and Plotly dashboard integrating all team outputs into an interactive tool for exploring provider, specialty, geographic, payment, and competitive patterns."],
   },
   {
     role: "AI Evaluation Specialist",
@@ -114,7 +114,7 @@ const experiences = [
     dates: "Dec 2025 — Mar 2026",
     location: "San Francisco, CA · Remote",
     logo: chirpLogo.url,
-    points: ["Built core cross-platform features and backend architecture for an iOS application focused on family-friendly activity searches.", "Developed interactive map APIs and custom filtering logic in React Native (Expo) while architecting a relational Supabase (PostgreSQL) backend with secure OAuth pipelines.", "Shipped production-ready UI screens and CRUD endpoints, enabling location filtering and secure user session management."],
+    points: ["Built core mobile features for a parent-focused iOS discovery app in React Native (Expo), helping transform an early prototype into a beta product used by hundreds of parents across the Bay Area.", "Developed the main map experience using a maps API, adding category and child-age filtering to dynamically surface relevant family-friendly points of interest.", "Designed the PostgreSQL data model for users, reviews, amenities, and related app data, supporting 10+ production-ready screens across account, POI, rating, and review workflows."],
     screenshots: [
       { src: chirpMainMenu.url, alt: "Chirp AI map-based main menu showing nearby family-friendly places", label: "Main menu" },
       { src: chirpPoiMenu.url, alt: "Chirp AI place details menu with reviews and recommendations", label: "Place details" },

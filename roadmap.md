@@ -33,3 +33,4 @@
 - [x] Add Johnson & Johnson Data Science Extern experience entry with its local logo
 - [x] Keep experience dates and location on single lines at every width
 - [x] Add Pfizer AI Engineering Extern experience entry with its local logo
+- [x] Rewrite Pfizer, Blueprint, Johnson & Johnson, and Chirp AI experience bullets
