@@ -32,3 +32,4 @@
 - [x] Add the supplied ATLAS dashboard screenshot using local image storage
 - [x] Add Johnson & Johnson Data Science Extern experience entry with its local logo
 - [x] Keep experience dates and location on single lines at every width
+- [x] Add Pfizer AI Engineering Extern experience entry with its local logo

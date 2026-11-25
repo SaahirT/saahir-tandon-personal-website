@@ -20,6 +20,7 @@ const chirpLogo = { url: "/images/chirp-ai-logo.jpeg" };
 const handshakeLogo = { url: "/images/handshake-ai-logo.jpeg" };
 const blueprintLogo = { url: "/images/rutgers-blueprint-logo.png" };
 const johnsonJohnsonLogo = { url: "/images/johnson-johnson-logo.jpeg" };
+const pfizerLogo = { url: "/images/pfizer-logo.jpeg" };
 const chirpMainMenu = { url: "/images/chirp-main-menu.jpeg" };
 const chirpPoiMenu = { url: "/images/chirp-poi-menu.jpeg" };
 const studentPerformanceImage = { url: "/images/student-performance-analysis.jpeg" };
@@ -67,6 +68,14 @@ const courses = [
 ] as const;
 
 const experiences = [
+  {
+    role: "AI Engineering Extern",
+    company: "Pfizer via Extern",
+    dates: "Nov 2026 — Present",
+    location: "Remote",
+    logo: pfizerLogo.url,
+    points: ["Developing an AI-powered document intelligence pipeline to automate review of 100+ page pharmaceutical vendor files, extracting critical dates, classifying document types, and flagging outdated compliance documentation.", "Building OCR and RAG-based workflows using Python, Tesseract, PaddleOCR, LlamaIndex, and open-source LLMs to transform scanned pharmaceutical documents into structures, searchable data for compliance teams.", "Evaluating document extraction, retrieval, and classification performance to optimize model accuracy and reduce manual QA workflows, helping identify documentation issues before they contribute to regulatory and drug-approval delays."],
+  },
   {
     role: "Backend Software Engineering Fellow",
     company: "Rutgers Blueprint",
